@@ -1,0 +1,6 @@
+.git/
+.vs/
+out/
+build/
+
+CMakePresets.json
