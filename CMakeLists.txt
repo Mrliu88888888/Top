@@ -6,6 +6,5 @@ include(Common.cmake)
 include(ThirdParty.cmake)
 include(Pack.cmake)
 
-add_subdirectory(src/winmain)
-add_subdirectory(src/linuxmain)
+add_subdirectory(src/main)
 add_subdirectory(src/qmain)
