@@ -27,3 +27,7 @@ configure_file (
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
     "${CMAKE_BINARY_DIR}/include/top/config/config.h"
 )
+configure_file (
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/path.h.in"
+    "${CMAKE_BINARY_DIR}/include/top/config/path.h"
+)
