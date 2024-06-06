@@ -11,6 +11,7 @@
 #endif
 
 namespace lm {
+namespace app {
 /// @brief 单例可执行程序
 /// @return 0: 单例
 ///         1: 已存在正在运行的程序
@@ -30,4 +31,5 @@ TOP_APP_API void SetConsoleCharsetUTF8();
 
 /// @brief 程序崩溃时生成DUMP文件
 TOP_APP_API void AutoDump();
+}   // namespace app
 };   // namespace lm
