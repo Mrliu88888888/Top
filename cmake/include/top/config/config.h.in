@@ -1,0 +1,1 @@
+#define TOP_NAME "@CMAKE_PROJECT_NAME@"
