@@ -1,3 +1,5 @@
+#pragma once
+
 #define TOP_VERSION "@Top_VERSION@"
 #define TOP_VERSION_MAJOR @Top_VERSION_MAJOR@
 #define TOP_VERSION_MINOR @Top_VERSION_MINOR@
