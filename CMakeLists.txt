@@ -8,7 +8,7 @@ include(Pack.cmake)
 
 option(BUILD_TESTING "Build tests" ON)
 option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 add_subdirectory(src/main)
 add_subdirectory(src/qmain)
