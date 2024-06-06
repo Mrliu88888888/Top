@@ -1,6 +1,6 @@
 project(App)
 
-add_library(${PROJECT_NAME} SHARED "App.cpp")
+add_library(${PROJECT_NAME} "App.cpp")
 target_include_directories(${PROJECT_NAME} PRIVATE
 	"${CMAKE_BINARY_DIR}/include"
 )

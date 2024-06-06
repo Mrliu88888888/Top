@@ -1,6 +1,6 @@
 project(Conv)
 
-add_library(${PROJECT_NAME} SHARED "Conv.cpp")
+add_library(${PROJECT_NAME} "Conv.cpp")
 if (${BUILD_SHARED_LIBS})
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_CONV_EXPORTS)
 else ()
