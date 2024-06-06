@@ -8,3 +8,4 @@ include(Pack.cmake)
 
 add_subdirectory(src/main)
 add_subdirectory(src/qmain)
+add_subdirectory(src/app)
