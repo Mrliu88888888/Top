@@ -5,3 +5,7 @@ project(Top VERSION 1.0.0)
 include(Common.cmake)
 include(ThirdParty.cmake)
 include(Pack.cmake)
+
+add_subdirectory(src/winmain)
+add_subdirectory(src/linuxmain)
+add_subdirectory(src/qmain)
