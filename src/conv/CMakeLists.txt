@@ -7,5 +7,5 @@ else ()
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_CONV_STATIC)
 endif ()
 target_include_directories(${PROJECT_NAME} PUBLIC
-	${TOP_INCLUDE}
+	"${TOP_INCLUDE}/conv"
 )

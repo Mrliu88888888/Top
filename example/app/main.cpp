@@ -1,4 +1,4 @@
-#include "app/App.h"
+#include "App.h"
 
 int main()
 {

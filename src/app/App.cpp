@@ -1,4 +1,4 @@
-#include "app/App.h"
+#include "App.h"
 #include "top/config/config.h"
 #include "top/config/version.h"
 #include <locale>
