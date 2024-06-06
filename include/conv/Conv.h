@@ -8,6 +8,11 @@
 #    else
 #        define TOP_CONV_API __declspec(dllimport)
 #    endif
+
+#    ifdef TOP_CONV_STATIC
+#        undef TOP_CONV_API
+#        define TOP_CONV_API
+#    endif
 #else
 #    define TOP_CONV_API
 #endif

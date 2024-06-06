@@ -6,6 +6,11 @@
 #    else
 #        define TOP_APP_API __declspec(dllimport)
 #    endif
+
+#    ifdef TOP_APP_STATIC
+#        undef TOP_APP_API
+#        define TOP_APP_API
+#    endif
 #else
 #    define TOP_APP_API
 #endif
