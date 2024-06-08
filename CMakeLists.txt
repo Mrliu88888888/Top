@@ -3,19 +3,13 @@ cmake_minimum_required(VERSION 3.12)
 project(Top VERSION 1.0.0)
 
 include(Common.cmake)
-include(ThirdParty.cmake)
 include(Pack.cmake)
 
 option(BUILD_TESTING "Build tests" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
-add_subdirectory(src/main)
-add_subdirectory(src/qmain)
-add_subdirectory(src/app)
-add_subdirectory(src/conv)
-add_subdirectory(src/log)
-
+add_subdirectory(src)
 if (${BUILD_TESTING})
 	enable_testing()
 	add_subdirectory(test)

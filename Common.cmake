@@ -20,14 +20,14 @@ elseif (MSVC)
 endif ()
 
 configure_file (
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
-    "${CMAKE_BINARY_DIR}/include/top/config/version.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
+	"${CMAKE_BINARY_DIR}/include/top/config/version.h"
 )
 configure_file (
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
-    "${CMAKE_BINARY_DIR}/include/top/config/config.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
+	"${CMAKE_BINARY_DIR}/include/top/config/config.h"
 )
 configure_file (
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/path.h.in"
-    "${CMAKE_BINARY_DIR}/include/top/config/path.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/path.h.in"
+	"${CMAKE_BINARY_DIR}/include/top/config/path.h"
 )
