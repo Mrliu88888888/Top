@@ -17,6 +17,7 @@ add_subdirectory(src/conv)
 add_subdirectory(src/log)
 
 if (${BUILD_TESTING})
+	enable_testing()
 	add_subdirectory(test)
 endif ()
 if (${BUILD_EXAMPLES})
