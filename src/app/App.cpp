@@ -20,6 +20,7 @@
 #endif
 
 namespace lm {
+namespace app {
 #ifdef _WIN32
 TOP_APP_API int SingleApp()
 {
@@ -123,6 +124,9 @@ TOP_APP_API void AutoDump()
 {
     SetUnhandledExceptionFilter(ExceptionFilter);
 }
+
+
+
 #elif __linux__
 int SingleApp()
 {
@@ -177,4 +181,5 @@ bool ChangeWorkPath()
     return chdir(path) == 0;
 }
 #endif
+}   // namespace app
 }   // namespace lm
