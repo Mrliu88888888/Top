@@ -1,4 +1,4 @@
-project(test_app)
+project(${TEST_NAME}_app)
 
 add_executable(${PROJECT_NAME} "test.cpp")
 target_link_libraries(${PROJECT_NAME} PRIVATE
