@@ -1,10 +1,9 @@
 #include "Log.h"
-#include <fmt/format.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-namespace light {
+namespace lm {
 namespace log {
 static std::shared_ptr<spdlog::logger> logger;
 
@@ -25,9 +24,9 @@ TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32
                       const uint32_t& maxfiles)
 {
     logger = (0 == maxfilesize)
-                 ? spdlog::stdout_color_mt("light")
+                 ? spdlog::stdout_color_mt(logname)
                  : spdlog::rotating_logger_mt(
-                       "light", logname, maxfilesize, ((maxfiles <= 0) ? 1 : maxfiles));
+                       logname, logname, maxfilesize, ((maxfiles <= 0) ? 1 : maxfiles));
 
     const auto logLevel = LogLevel(level);
     logger->set_level(logLevel);
@@ -48,4 +47,4 @@ TOP_LOG_API void Log(const int& level, const std::string& msg, const char* filen
     logger->flush();
 }
 }   // namespace log
-}   // namespace light
+}   // namespace lm

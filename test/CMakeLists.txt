@@ -6,3 +6,4 @@ set(TEST_NAME ${PROJECT_NAME})
 
 add_subdirectory(app)
 add_subdirectory(conv)
+add_subdirectory(log)

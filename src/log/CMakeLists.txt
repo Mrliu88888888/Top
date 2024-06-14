@@ -6,7 +6,8 @@ if (${BUILD_SHARED_LIBS})
 else ()
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_LOG_STATIC)
 endif ()
-target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 target_include_directories(${PROJECT_NAME} PUBLIC
 	"${TOP_INCLUDE}/log"
 )
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
