@@ -2,7 +2,8 @@
   "dependencies": [
     "concurrentqueue",
     "fmt",
+    "gtest",
     "spdlog",
-    "gtest"
+    "simpleini"
   ]
 }

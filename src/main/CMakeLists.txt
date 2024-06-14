@@ -5,6 +5,7 @@ add_executable(${PROJECT_NAME}
 	"pcm.cpp"
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
+	${SIMPLEINI_INCLUDE_DIRS}
 	"${CMAKE_BINARY_DIR}/include"
 	"${TOP_THIRDPARTY}/ThreadPool"
 )

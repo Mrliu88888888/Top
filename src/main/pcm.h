@@ -23,3 +23,5 @@ public:
 
 void run();
 }   // namespace pcm
+
+#define ENABLE_PCM
