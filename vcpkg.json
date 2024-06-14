@@ -1,7 +1,8 @@
 {
-    "dependencies": [
-        "concurrentqueue",
-        "fmt",
-        "spdlog"
-    ]
+  "dependencies": [
+    "concurrentqueue",
+    "fmt",
+    "spdlog",
+    "gtest"
+  ]
 }
