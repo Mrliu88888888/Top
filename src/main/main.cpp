@@ -1,7 +1,11 @@
 #include <iostream>
+
 #include "top/config/config.h"
 #include "top/config/version.h"
+
 #include "App.h"
+
+#include "pcm.h"
 
 int main(int argc, char* argv[])
 {
@@ -19,6 +23,7 @@ int main(int argc, char* argv[])
 
     std::cout << "hello " << TOP_NAME << ": " << TOP_VERSION << std::endl;
 
+    pcm::run();
 
     return 0;
 }
