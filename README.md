@@ -12,6 +12,7 @@
 * [vcpkg](https://github.com/microsoft/vcpkg)
 * [Git](https://www.git-scm.com/)
 * [LLVM](https://clang.llvm.org/)
+* [GoogleTest](https://github.com/google/googletest)
 * [spdlog](https://github.com/gabime/spdlog)
 * [fmt](https://github.com/fmtlib/fmt)
 * [concurrentqueue](https://github.com/cameron314/concurrentqueue)
