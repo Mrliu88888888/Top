@@ -26,16 +26,25 @@ constexpr int LOG_LEVEL_WARN     = 3;
 constexpr int LOG_LEVEL_ERROR    = 4;
 constexpr int LOG_LEVEL_CRITICAL = 5;
 
-/// @brief
-/// @param logname
-/// @param level
-/// @param maxfilesize 0: out console
-///                    >0: out file, byte
-/// @param maxfiles
-/// @return
+/// @brief 初始化日志
+/// @param logname 日志文件名
+/// @param level 日志等级
+/// @param maxfilesize 0: 输出到控制台
+///                    >0: 输出到文件 字节 (KB)
+///                                   1024 * 1024 = 1MB
+///                                   1024 * 1024 * 1024 = 1GB
+/// @param maxfiles 最大日志文件数
+/// @return 空
 TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
                       const uint32_t& maxfiles);
 
+/// @brief 输出日志
+/// @param level 日志等级
+/// @param msg 输出消息
+/// @param filename 源码文件名
+/// @param linenum 源码行号
+/// @param funcname 函数名
+/// @return 空
 TOP_LOG_API void Log(const int& level, const std::string& msg, const char* filename,
                      const int& linenum, const char* funcname);
 }   // namespace log
