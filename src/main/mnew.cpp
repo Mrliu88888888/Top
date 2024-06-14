@@ -1,20 +1,26 @@
 #include "mnew.h"
 
+#include <string>
+#include <thread>
+
 #include <mimalloc-override.h>
 #include <mimalloc-new-delete.h>
 
 
+// #define ENABLE_PRINT
 
 namespace mnew {
 constexpr int kNameSize = 256;
 
 struct CName
 {
-    explicit CName()
+    explicit CName(const std::string_view& n)
         : name((char*)malloc(kNameSize))
         , size(kNameSize)
     {
         memset(name, '\0', kNameSize);
+
+        strcpy_s(name, n.length() + 1, n.data());
     }
     ~CName()
     {
@@ -22,7 +28,11 @@ struct CName
         size = 0;
     }
 
+#ifdef ENABLE_PRINT
     inline void print() const { printf("name: %s\n", name); }
+#else
+    inline void print() const {}
+#endif
 
     char* name;
     int   size;
@@ -30,11 +40,13 @@ struct CName
 
 struct CXXName
 {
-    explicit CXXName()
+    explicit CXXName(const std::string_view& n)
         : name(new char[kNameSize])
         , size(kNameSize)
     {
         memset(name, '\0', kNameSize);
+
+        strcpy_s(name, n.length() + 1, n.data());
     }
     ~CXXName()
     {
@@ -42,7 +54,11 @@ struct CXXName
         size = 0;
     }
 
+#ifdef ENABLE_PRINT
     inline void print() const { printf("name: %s\n", name); }
+#else
+    inline void print() const {}
+#endif
 
     char* name;
     int   size;
@@ -50,13 +66,21 @@ struct CXXName
 
 void run()
 {
+    printf("start\n");
+    getchar();
+
+    std::thread([]() {
+        for (int i = 0; i < 10000; ++i) {
+            CXXName(std::to_string(i)).print();
+        }
+    }).join();
+
     for (int i = 0; i < 10000; ++i) {
-        CName name;
+        CName name(std::to_string(i));
         name.print();
     }
-    for (int i = 0; i < 10000; ++i) {
-        CXXName name;
-        name.print();
-    }
+
+    printf("end\n");
+    getchar();
 }
 }   // namespace mnew
