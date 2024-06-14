@@ -3,7 +3,8 @@
     "concurrentqueue",
     "fmt",
     "gtest",
+    "simpleini",
     "spdlog",
-    "simpleini"
+    "mimalloc"
   ]
 }

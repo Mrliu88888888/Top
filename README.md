@@ -18,3 +18,4 @@
 * [concurrentqueue](https://github.com/cameron314/concurrentqueue)
 * [ThreadPool](https://github.com/progschj/ThreadPool)
 * [simpleini](https://github.com/brofield/simpleini)
+* [mimalloc](https://github.com/microsoft/mimalloc)

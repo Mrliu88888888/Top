@@ -1,6 +1,5 @@
 #include "App.h"
-#include "top/config/config.h"
-#include "top/config/version.h"
+
 #include <locale>
 #ifdef _WIN32
 #    include <io.h>
@@ -18,6 +17,9 @@
 #    include <string.h>
 #    include <signal.h>
 #endif
+
+#include "top/config/config.h"
+#include "top/config/version.h"
 
 namespace lm {
 namespace app {

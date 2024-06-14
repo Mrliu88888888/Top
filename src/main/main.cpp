@@ -9,6 +9,7 @@
 #include "App.h"
 
 // #include "pcm.h"
+#include "mnew.h"
 
 struct Config
 {
@@ -68,6 +69,10 @@ int main(int argc, char* argv[])
 
 #ifdef ENABLE_PCM
     pcm::run();
+#endif
+
+#ifdef ENABLE_MNEW
+    mnew::run();
 #endif
 
     return 0;
