@@ -10,6 +10,7 @@ option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 add_subdirectory(src)
+
 if (${BUILD_TESTING})
 	enable_testing()
 	add_subdirectory(test)
