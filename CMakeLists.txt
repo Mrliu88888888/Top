@@ -18,3 +18,16 @@ endif ()
 if (${BUILD_EXAMPLES})
 	add_subdirectory(example)
 endif ()
+
+install(DIRECTORY
+	doc
+
+	DESTINATION .
+)
+
+install(FILES
+	README.md
+	LICENSE
+
+	DESTINATION .
+)
