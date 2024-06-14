@@ -4,6 +4,9 @@ add_library(${PROJECT_NAME} "App.cpp")
 target_include_directories(${PROJECT_NAME} PRIVATE
 	"${CMAKE_BINARY_DIR}/include"
 )
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+	FULL_DUMP_INFO
+)
 if (${BUILD_SHARED_LIBS})
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_APP_EXPORTS)
 else ()
