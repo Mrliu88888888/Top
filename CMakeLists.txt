@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.12)
 
 project(Top VERSION 1.0.0)
 
-include(Common.cmake)
-include(Pack.cmake)
+include(cmake/Common.cmake)
+include(cmake/Pack.cmake)
+include(cmake/ThirdParty.cmake)
 
 option(BUILD_TESTING "Build tests" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
