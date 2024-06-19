@@ -11,7 +11,9 @@ Convert::Convert(const char* fromcode, const char* tocode)
 }
 Convert::~Convert()
 {
-    iconv_close(conv_);
+    if (is_valid()) {
+        iconv_close(conv_);
+    }
 }
 std::string Convert::conv(const std::string& str)
 {
