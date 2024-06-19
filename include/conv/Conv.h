@@ -33,7 +33,7 @@ public:
     /// @brief 编码转换是否可用
     /// @return true: 可用
     ///        false: 不可用
-    inline bool is_open() const { return ((void*)-1 != conv_); }
+    inline bool is_valid() const { return ((void*)-1 != conv_); }
 
     /// @brief 转换
     /// @param str 字符串
@@ -55,13 +55,22 @@ inline std::string ConvertEncoding(const std::string& input, const char* fromcod
                                    const char* tocode)
 {
     Convert conv(fromcode, tocode);
-    return conv.is_open() ? conv.conv(input) : "";
+    return conv.is_valid() ? conv.conv(input) : "";
 }
 
+/// @brief UTF-8编码字符串转GBK编码
+/// @param str 字符串
+/// @return 空: 转换失败
+///             目标编码的字符串
 inline std::string UTF8ToGBK(const std::string& str)
 {
     return ConvertEncoding(str, "UTF-8", "GBK");
 }
+
+/// @brief GBK编码字符串转UTF-8编码
+/// @param str 字符串
+/// @return 空: 转换失败
+///             目标编码的字符串
 inline std::string GBKToUTF8(const std::string& str)
 {
     return ConvertEncoding(str, "GBK", "UTF-8");
