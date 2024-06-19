@@ -52,46 +52,12 @@ TOP_LOG_API void Log(const int& level, const std::string& msg, const char* filen
 
 #define STRING_FORMAT(MSG, ...) ::fmt::format(MSG, ##__VA_ARGS__)
 
-#define LOG_TRACE(MSG, ...)                           \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_TRACE,        \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
+#define LOG(LEVEL, MSG) \
+    ::lm::log::Log(LEVEL, MSG, __FILE__, __LINE__, static_cast<const char*>(__FUNCTION__))
 
-#ifdef _DEBUG
-#    define LOG_TRACE_NULL LOG_TRACE("")
-#else
-#    define LOG_TRACE_NULL
-#endif
-
-#define LOG_DEBUG(MSG, ...)                           \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_DEBUG,        \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
-#define LOG_INFO(MSG, ...)                            \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_INFO,         \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
-#define LOG_WARN(MSG, ...)                            \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_WARN,         \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
-#define LOG_ERROR(MSG, ...)                           \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_ERROR,        \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
-#define LOG_CRITICAL(MSG, ...)                        \
-    ::lm::log::Log(::lm::log::LOG_LEVEL_CRITICAL,     \
-                   STRING_FORMAT(MSG, ##__VA_ARGS__), \
-                   __FILE__,                          \
-                   __LINE__,                          \
-                   static_cast<const char*>(__FUNCTION__))
+#define LOG_TRACE(MSG, ...) LOG(::lm::log::LOG_LEVEL_TRACE, STRING_FORMAT(MSG, ##__VA_ARGS__))
+#define LOG_DEBUG(MSG, ...) LOG(::lm::log::LOG_LEVEL_DEBUG, STRING_FORMAT(MSG, ##__VA_ARGS__))
+#define LOG_INFO(MSG, ...) LOG(::lm::log::LOG_LEVEL_INFO, STRING_FORMAT(MSG, ##__VA_ARGS__))
+#define LOG_WARN(MSG, ...) LOG(::lm::log::LOG_LEVEL_WARN, STRING_FORMAT(MSG, ##__VA_ARGS__))
+#define LOG_ERROR(MSG, ...) LOG(::lm::log::LOG_LEVEL_ERROR, STRING_FORMAT(MSG, ##__VA_ARGS__))
+#define LOG_CRITICAL(MSG, ...) LOG(::lm::log::LOG_LEVEL_CRITICAL, STRING_FORMAT(MSG, ##__VA_ARGS__))
