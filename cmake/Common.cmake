@@ -18,6 +18,11 @@ if (CMAKE_CL_64)
 else ()
   set(TOP_PLATFORM x86)
 endif ()
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(TOP_DEBUG TRUE)
+else ()
+    set(TOP_DEBUG FALSE)
+endif ()
 
 configure_file (
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
