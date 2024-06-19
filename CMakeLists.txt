@@ -20,21 +20,12 @@ if (${BUILD_EXAMPLES})
 	add_subdirectory(example)
 endif ()
 
-
-
-install(FILES
-	cmake/TopConfig.cmake
-
-	DESTINATION share/${PROJECT_NAME}
-)
-
 install(DIRECTORY
 	doc
 	example
 
 	DESTINATION .
 )
-
 install(FILES
 	README.md
 	LICENSE
