@@ -43,3 +43,4 @@ Top
 * [ThreadPool](https://github.com/progschj/ThreadPool)
 * [simpleini](https://github.com/brofield/simpleini)
 * [mimalloc](https://github.com/microsoft/mimalloc)
+* [libiconv](https://www.gnu.org/software/libiconv/)
