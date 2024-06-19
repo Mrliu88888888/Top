@@ -21,6 +21,7 @@ endif ()
 
 install(DIRECTORY
 	doc
+	example
 
 	DESTINATION .
 )
