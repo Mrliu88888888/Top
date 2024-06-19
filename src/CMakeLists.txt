@@ -17,7 +17,6 @@ install(TARGETS
 	LIBRARY
 	ARCHIVE
 )
-
 install(DIRECTORY
 	${TOP_INCLUDE}
 

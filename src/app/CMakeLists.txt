@@ -1,12 +1,12 @@
 project(App)
 
 if (WIN32)
-	set(SOURCES "App_windows.cpp")
+	set(PLATFORM_SOURCES "App_windows.cpp")
 elseif (UNIX)
-	set(SOURCES "App_linux.cpp")
+	set(PLATFORM_SOURCES "App_linux.cpp")
 endif ()
 add_library(${PROJECT_NAME}
-	${SOURCES}
+	${PLATFORM_SOURCES}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
 	"${CMAKE_BINARY_DIR}/include"
