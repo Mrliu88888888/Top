@@ -10,5 +10,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	Iconv::Iconv
 )
 target_include_directories(${PROJECT_NAME} PUBLIC
-	"${TOP_INCLUDE}/conv"
+	$<BUILD_INTERFACE:${TOP_INCLUDE}/conv>
+	$<INSTALL_INTERFACE:include/conv>
 )

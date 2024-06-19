@@ -8,6 +8,7 @@ else ()
 endif ()
 target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 target_include_directories(${PROJECT_NAME} PUBLIC
-	"${TOP_INCLUDE}/log"
+	$<BUILD_INTERFACE:${TOP_INCLUDE}/log>
+	$<INSTALL_INTERFACE:include/log>
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
