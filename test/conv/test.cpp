@@ -17,5 +17,5 @@ TEST(Conv, GBK2U8)
 
 TEST(Conv, UnknownEncoding)
 {
-    lm::coding::ConvertEncoding("hello世界！", "UnknownEncoding", "UnknownEncoding");
+    ASSERT_EQ(lm::coding::ConvertEncoding("hello世界！", "UnknownEncoding", "UnknownEncoding"), "");
 }
