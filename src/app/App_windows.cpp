@@ -1,29 +1,22 @@
 #include "App.h"
 
 #include <locale>
-#ifdef _WIN32
-#    include <io.h>
-#    include <direct.h>
-#    include <tchar.h>
-#    include <Windows.h>
-#    include <Shlwapi.h>
-#    include <signal.h>
-#    include <DbgHelp.h>
-#    pragma comment(lib, "ShLwApi.Lib")
-#elif __linux__
-#    include <stdio.h>
-#    include <fcntl.h>
-#    include <unistd.h>
-#    include <string.h>
-#    include <signal.h>
-#endif
+#include <io.h>
+#include <direct.h>
+#include <tchar.h>
+
+#include <Windows.h>
+#include <Shlwapi.h>
+#include <signal.h>
+#include <DbgHelp.h>
 
 #include "top/config/config.h"
 #include "top/config/version.h"
 
+#pragma comment(lib, "ShLwApi.Lib")
+
 namespace lm {
 namespace app {
-#ifdef _WIN32
 TOP_APP_API int SingleApp()
 {
     auto hMutex = ::CreateMutex(NULL, FALSE, _T(TOP_NAME));
@@ -46,7 +39,7 @@ TOP_APP_API void SetConsoleCharsetUTF8()
     SetConsoleOutputCP(CP_UTF8);
 }
 
-#    pragma region 程序崩溃时生成DUMP文件
+#pragma region 程序崩溃时生成DUMP文件
 typedef BOOL(WINAPI* MiniDumpWriteDumpT)(HANDLE, DWORD, HANDLE, MINIDUMP_TYPE,
                                          PMINIDUMP_EXCEPTION_INFORMATION,
                                          PMINIDUMP_USER_STREAM_INFORMATION,
@@ -106,11 +99,11 @@ int GenerateMiniDump(PEXCEPTION_POINTERS pExceptionPointers)
         GetCurrentProcess(),
         GetCurrentProcessId(),
         hDumpFile,
-#    ifdef FULL_DUMP_INFO
+#ifdef FULL_DUMP_INFO
         (MINIDUMP_TYPE)(MiniDumpNormal | MiniDumpWithDataSegs | MiniDumpWithFullMemory),
-#    else
+#else
         MiniDumpNormal,
-#    endif
+#endif
         (pExceptionPointers ? &expParam : NULL),
         NULL,
         NULL);
@@ -126,67 +119,10 @@ LONG WINAPI ExceptionFilter(LPEXCEPTION_POINTERS lpExceptionInfo)
     }
     return GenerateMiniDump(lpExceptionInfo);
 }
-#    pragma endregion
+#pragma endregion
 TOP_APP_API void AutoDump()
 {
     SetUnhandledExceptionFilter(ExceptionFilter);
 }
-
-
-
-#elif __linux__
-int SingleApp()
-{
-    int fd = -1;
-    {
-        char filename[128] = {0};
-        sprintf(filename, "/tmp/%s.pid", APP_NAME);
-        fd = open(filename, O_RDWR | O_CREAT, (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
-        if (fd < 0) {
-            return -200;
-        }
-    }
-
-    {
-        struct flock fl = {0};
-        fl.l_type       = F_WRLCK;
-        fl.l_start      = 0;
-        fl.l_whence     = SEEK_SET;
-        fl.l_len        = 0;
-
-        if (fcntl(fd, F_SETLK, &fl) == -1) {
-            close(fd);
-            return 1;
-        }
-        else {
-            char buf[16] = {0};
-            if (ftruncate(fd, 0) == -1) {
-                return -201;
-            }
-            sprintf(buf, "%ld", (long)getpid());
-            if (write(fd, buf, strlen(buf)) == -1) {
-                return -202;
-            }
-            return 0;
-        }
-    }
-}
-
-bool ChangeWorkPath()
-{
-    char       path[1024] = {0};
-    const auto len        = readlink("/proc/self/exe", path, sizeof(path) - 1);
-    if (len == -1) {
-        return false;
-    }
-    path[len] = '\0';
-    auto ch   = strrchr(path, '/');
-    if (ch == NULL) {
-        return false;
-    }
-    *ch = '\0';
-    return chdir(path) == 0;
-}
-#endif
 }   // namespace app
 }   // namespace lm

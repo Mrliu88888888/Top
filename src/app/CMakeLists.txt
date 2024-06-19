@@ -1,6 +1,13 @@
 project(App)
 
-add_library(${PROJECT_NAME} "App.cpp")
+if (WIN32)
+	set(SOURCES "App_windows.cpp")
+elseif (UNIX)
+	set(SOURCES "App_linux.cpp")
+endif ()
+add_library(${PROJECT_NAME}
+	${SOURCES}
+)
 target_include_directories(${PROJECT_NAME} PRIVATE
 	"${CMAKE_BINARY_DIR}/include"
 )
