@@ -1,11 +1,18 @@
 #include "mnew.h"
 
+#include <string.h>
 #include <string>
 #include <thread>
 
 #include <mimalloc-override.h>
 #include <mimalloc-new-delete.h>
 
+
+#ifdef __linux__
+#    define STRCPY(DESC, LEN, SRC) strcpy(DESC, SRC)
+#else
+#    define STRCPY(DESC, LEN, SRC) strcpy_s(DESC, LEN, SRC)
+#endif   // __linux__
 
 // #define ENABLE_PRINT
 
@@ -20,7 +27,7 @@ struct CName
     {
         memset(name, '\0', kNameSize);
 
-        strcpy_s(name, n.length() + 1, n.data());
+        STRCPY(name, n.length() + 1, n.data());
     }
     ~CName()
     {
@@ -46,7 +53,7 @@ struct CXXName
     {
         memset(name, '\0', kNameSize);
 
-        strcpy_s(name, n.length() + 1, n.data());
+        STRCPY(name, n.length() + 1, n.data());
     }
     ~CXXName()
     {

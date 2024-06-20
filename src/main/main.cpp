@@ -1,5 +1,4 @@
 #include <iostream>
-#include <filesystem>
 
 #include <SimpleIni.h>
 
@@ -8,7 +7,7 @@
 
 #include "App.h"
 
-// #include "pcm.h"
+#include "pcm.h"
 #include "mnew.h"
 
 struct Config
@@ -34,10 +33,10 @@ struct Config
         Config conf;
 
         const auto filename = (2 == argc) ? argv[1] : "conf/top.ini";
-        if (!std::filesystem::exists(filename)) {
-            std::cout << filename << " file not exists" << std::endl;
-            return conf;
-        }
+        // if (!std::filesystem::exists(filename)) {
+        //     std::cout << filename << " file not exists" << std::endl;
+        //     return conf;
+        // }
 
         CSimpleIniA ini;
         if (SI_OK == ini.LoadFile(filename)) {
@@ -50,13 +49,15 @@ struct Config
 
 int main(int argc, char* argv[])
 {
+#ifdef _WIN32
     lm::app::AutoDump();
+
+    lm::app::SetConsoleCharsetUTF8();
+#endif   // _WIN32
 
     if (lm::app::SingleApp() != 0) {
         return 1;
     }
-
-    lm::app::SetConsoleCharsetUTF8();
 
     if (!lm::app::ChangeWorkPath()) {
         return 2;

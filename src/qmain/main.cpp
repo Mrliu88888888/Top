@@ -14,7 +14,9 @@ int main(int argc, char* argv[])
     app.setApplicationName(TOP_NAME);
     app.setApplicationVersion(TOP_VERSION);
 
+#ifdef _WIN32
     lm::app::AutoDump();
+#endif   // _WIN32
 
     if (lm::app::SingleApp() != 0) {
         return 1;

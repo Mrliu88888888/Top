@@ -17,7 +17,7 @@ int SingleApp()
     int fd = -1;
     {
         char filename[128] = {0};
-        sprintf(filename, "/tmp/%s.pid", APP_NAME);
+        sprintf(filename, "/tmp/%s.pid", TOP_NAME);
         fd = open(filename, O_RDWR | O_CREAT, (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
         if (fd < 0) {
             return -200;

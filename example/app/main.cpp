@@ -10,9 +10,11 @@ using std::endl;
 
 int main()
 {
+#ifdef _WIN32
     lm::app::AutoDump();
 
     lm::app::SetConsoleCharsetUTF8();
+#endif   // _WIN32
 
     if (!lm::app::ChangeWorkPath()) {
         cout << "ChangeWorkPath failed..." << endl;
