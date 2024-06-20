@@ -8,9 +8,6 @@ endif()
 add_library(${PROJECT_NAME}
 	${PLATFORM_SOURCES}
 )
-target_include_directories(${PROJECT_NAME} PRIVATE
-	"${CMAKE_BINARY_DIR}/include"
-)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
 	FULL_DUMP_INFO
 )
@@ -22,4 +19,7 @@ endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
 	$<BUILD_INTERFACE:${TOP_INCLUDE}/app>
 	$<INSTALL_INTERFACE:include/app>
+
+	$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
+	$<INSTALL_INTERFACE:include>
 )
