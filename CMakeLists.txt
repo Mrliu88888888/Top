@@ -5,7 +5,7 @@ project(Top VERSION 1.0.0)
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
-include(cmake/FunctionFindDependencies.cmake)
+include(cmake/util/FindDependencies.cmake)
 
 option(BUILD_TESTING "Build tests" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
