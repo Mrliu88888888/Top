@@ -8,7 +8,6 @@
 # 项目结构
 ```
 Top
-├── 3rd
 ├── cmake
 ├── doc
 ├── example
@@ -16,10 +15,10 @@ Top
 ├── script
 ├── src
 ├── test
+├── ThirdParty
 ├── .clang-format
 ├── .clang-tidy
 ├── .editorconfig
-├── .gitignore
 ├── CMakeLists.txt
 ├── CMakePresets.json
 ├── LICENSE
