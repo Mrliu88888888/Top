@@ -22,8 +22,6 @@ Top
 ├── .gitignore
 ├── CMakeLists.txt
 ├── CMakePresets.json
-├── Common.cmake
-├── Pack.cmake
 ├── LICENSE
 ├── README.md
 └── vcpkg.json
