@@ -42,3 +42,4 @@ Top
 * [simpleini](https://github.com/brofield/simpleini)
 * [mimalloc](https://github.com/microsoft/mimalloc)
 * [libiconv](https://www.gnu.org/software/libiconv/)
+* [QtCipherSqlitePlugin](https://github.com/devbean/QtCipherSqlitePlugin)
