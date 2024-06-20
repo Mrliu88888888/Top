@@ -1,6 +1,6 @@
 #include <iostream>
 
-
+#include "top/config/version.h"
 #include "App.h"
 #include "Conv.h"
 #include "Log.h"
@@ -29,6 +29,13 @@ int main()
             return 2;
         }
     }
+
+    cout << "top app version: " << TOP_VERSION << endl;
+    LOG_INFO("top app version: {}, {}-{}-{}",
+             TOP_VERSION,
+             TOP_VERSION_MAJOR,
+             TOP_VERSION_MINOR,
+             TOP_VERSION_PATCH);
 
     return 0;
 }
