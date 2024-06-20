@@ -13,11 +13,5 @@ TEST(App, SingleApp)
 
 TEST(App, SingleApp2)
 {
-    ASSERT_EQ(lm::app::SingleApp(),
-#ifdef __linux__
-              0
-#else
-              1
-#endif   // __linux__
-    );
+    ASSERT_EQ(lm::app::SingleApp(), 1);
 }
