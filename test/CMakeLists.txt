@@ -16,10 +16,11 @@ install(TARGETS
 	RUNTIME
 )
 
-FindTargetDependencies(${TEST_NAME}_app LIBS)
-FindTargetDependencies(${TEST_NAME}_conv LIBS)
-FindTargetDependencies(${TEST_NAME}_log LIBS)
-list(REMOVE_DUPLICATES TARGET_DEPENDENCIES)
+FindTargetDependencies(TARGET_DEPENDENCIES 
+	${TEST_NAME}_app
+	${TEST_NAME}_conv
+	${TEST_NAME}_log
+)
 FindTargetLibraries(TARGET_DEPENDENCIES TARGET_LIBRARIES)
 install(FILES 
 	${TARGET_LIBRARIES}

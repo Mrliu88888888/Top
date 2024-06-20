@@ -35,12 +35,13 @@ install(EXPORT TopConfig
     DESTINATION share/Top
 )
 
-FindTargetDependencies(main TARGET_DEPENDENCIES)
-FindTargetDependencies(qmain TARGET_DEPENDENCIES)
-FindTargetDependencies(App TARGET_DEPENDENCIES)
-FindTargetDependencies(Conv TARGET_DEPENDENCIES)
-FindTargetDependencies(Log TARGET_DEPENDENCIES)
-list(REMOVE_DUPLICATES TARGET_DEPENDENCIES)
+FindTargetDependencies(TARGET_DEPENDENCIES 
+	main
+	qmain
+	App
+	Conv
+	Log
+)
 FindTargetLibraries(TARGET_DEPENDENCIES TARGET_LIBRARIES)
 install(FILES 
 	${TARGET_LIBRARIES}
