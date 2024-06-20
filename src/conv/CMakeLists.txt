@@ -1,11 +1,11 @@
 project(Conv)
 
 add_library(${PROJECT_NAME} "Conv.cpp")
-if (${BUILD_SHARED_LIBS})
+if(${BUILD_SHARED_LIBS})
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_CONV_EXPORTS)
-else ()
+else()
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_CONV_STATIC)
-endif ()
+endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	Iconv::Iconv
 )

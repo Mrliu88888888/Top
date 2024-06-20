@@ -13,13 +13,13 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 add_subdirectory(src)
 
-if (${BUILD_TESTING})
+if(${BUILD_TESTING})
 	enable_testing()
 	add_subdirectory(test)
-endif ()
-if (${BUILD_EXAMPLES})
+endif()
+if(${BUILD_EXAMPLES})
 	add_subdirectory(example)
-endif ()
+endif()
 
 install(DIRECTORY
 	doc
