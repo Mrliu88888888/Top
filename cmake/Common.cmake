@@ -40,8 +40,8 @@ configure_file(
 	"${CMAKE_BINARY_DIR}/include/top/config/config.h"
 )
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/global_export.h.in"
-	"${CMAKE_BINARY_DIR}/include/top/config/global_export.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
+	"${CMAKE_BINARY_DIR}/include/top/global.h"
 )
 
 install(DIRECTORY

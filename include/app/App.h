@@ -1,6 +1,6 @@
 #pragma once
 
-#include "top/config/global_export.h"
+#include "top/global.h"
 
 namespace lm {
 namespace app {

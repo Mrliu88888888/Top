@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fmt/format.h>
-#include "top/config/global_export.h"
+#include "top/global.h"
 
 namespace lm {
 namespace log {
