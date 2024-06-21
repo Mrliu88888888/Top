@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/logo.ico</file>
+        <file>res/logo.png</file>
+        <file>res/qss/Aqua.qss</file>
+        <file>res/qss/MacOS.qss</file>
+        <file>res/qss/Ubuntu.qss</file>
+    </qresource>
+</RCC>
