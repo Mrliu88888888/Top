@@ -25,6 +25,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 else()
     set(TOP_DEBUG FALSE)
 endif()
+if(WIN32)
+    set(TOP_PLATFORM windows)
+elseif(UNIX)
+    set(TOP_PLATFORM linux)
+endif()
 
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"

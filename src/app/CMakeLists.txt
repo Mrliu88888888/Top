@@ -1,12 +1,7 @@
 project(App)
 
-if(WIN32)
-	set(PLATFORM_SOURCES "App_windows.cpp")
-elseif(UNIX)
-	set(PLATFORM_SOURCES "App_linux.cpp")
-endif()
 add_library(${PROJECT_NAME}
-	${PLATFORM_SOURCES}
+	platform/${TOP_PLATFORM}/App.cpp
 )
 if(BUILD_SHARED_LIBS)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_EXPORTS)
