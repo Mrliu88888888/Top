@@ -33,3 +33,7 @@ install(FILES
 
 	DESTINATION .
 )
+
+message(STATUS "${PROJECT_NAME} Build tests: ${BUILD_TESTING}")
+message(STATUS "${PROJECT_NAME} Build examples: ${BUILD_EXAMPLES}")
+message(STATUS "${PROJECT_NAME} Build using shared libraries: ${BUILD_SHARED_LIBS}")
