@@ -5,6 +5,7 @@ add_subdirectory(qmain)
 add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
+add_subdirectory(SQLiteRPC)
 
 install(TARGETS
 	main
