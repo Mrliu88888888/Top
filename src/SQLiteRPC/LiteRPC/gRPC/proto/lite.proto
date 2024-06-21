@@ -6,7 +6,7 @@ message ConnectInfo {
 }
 
 message ConnectResult {
-    int code = 1;
+    int32 code = 1;
     string desc = 2;
 }
 
