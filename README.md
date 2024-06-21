@@ -52,3 +52,4 @@ export https_proxy=$proxy
 * [libiconv](https://www.gnu.org/software/libiconv/)
 * [QtCipherSqlitePlugin](https://github.com/devbean/QtCipherSqlitePlugin)
 * [grpc](https://github.com/grpc/grpc)
+* [protobuf](https://github.com/protocolbuffers/protobuf)

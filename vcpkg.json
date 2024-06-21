@@ -2,11 +2,12 @@
   "dependencies": [
     "concurrentqueue",
     "fmt",
+    "grpc",
     "gtest",
     "libiconv",
     "mimalloc",
     "simpleini",
     "spdlog",
-    "grpc"
+    "protobuf"
   ]
 }
