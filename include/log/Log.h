@@ -1,21 +1,7 @@
 #pragma once
 
 #include <fmt/format.h>
-
-#ifdef _MSC_VER
-#    ifdef TOP_LOG_EXPORTS
-#        define TOP_LOG_API __declspec(dllexport)
-#    else
-#        define TOP_LOG_API __declspec(dllimport)
-#    endif
-
-#    ifdef TOP_LOG_STATIC
-#        undef TOP_LOG_API
-#        define TOP_LOG_API
-#    endif
-#else
-#    define TOP_LOG_API
-#endif
+#include "top/config/global_export.h"
 
 namespace lm {
 namespace log {
@@ -35,8 +21,8 @@ constexpr int LOG_LEVEL_CRITICAL = 5;
 ///                                   1024 * 1024 * 1024 = 1GB
 /// @param maxfiles 最大日志文件数
 /// @return 空
-TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
-                      const uint32_t& maxfiles);
+TOP_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
+                  const uint32_t& maxfiles);
 
 /// @brief 输出日志
 /// @param level 日志等级
@@ -45,8 +31,8 @@ TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32
 /// @param linenum 源码行号
 /// @param funcname 函数名
 /// @return 空
-TOP_LOG_API void Log(const int& level, const std::string& msg, const char* filename,
-                     const int& linenum, const char* funcname);
+TOP_API void Log(const int& level, const std::string& msg, const char* filename, const int& linenum,
+                 const char* funcname);
 }   // namespace log
 }   // namespace lm
 

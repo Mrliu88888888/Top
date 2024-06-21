@@ -48,8 +48,6 @@ if(WIN32)
 		"${EXECUTABLE_OUTPUT_PATH}/mimalloc-redirect.dll"
 		"${EXECUTABLE_OUTPUT_PATH}/iconv-2.dll"
 	)
-elseif(UNIX)
-	set(DEPEND_DLL)
 endif()
 install(FILES 
 	${TARGET_LIBRARIES}

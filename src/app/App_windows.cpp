@@ -15,22 +15,24 @@
 
 #pragma comment(lib, "ShLwApi.Lib")
 
+#define FULL_DUMP_INFO
+
 namespace lm {
 namespace app {
-TOP_APP_API int SingleApp()
+TOP_API int SingleApp()
 {
     auto hMutex = ::CreateMutex(NULL, FALSE, _T(TOP_NAME));
     return hMutex ? ((ERROR_ALREADY_EXISTS == ::GetLastError()) ? 1 : 0) : -100;
 }
 
-TOP_APP_API bool ChangeWorkPath()
+TOP_API bool ChangeWorkPath()
 {
     TCHAR path[MAX_PATH] = {0};
     GetModuleFileName(NULL, path, MAX_PATH);
     return (PathRemoveFileSpec(path) == TRUE) ? (_tchdir(path) == 0) : false;
 }
 
-TOP_APP_API void SetConsoleCharsetUTF8()
+TOP_API void SetConsoleCharsetUTF8()
 {
     // 在win server 2012 r2操作系统测试崩溃
     // std::locale::global(std::locale(".UTF-8"));
@@ -120,7 +122,7 @@ LONG WINAPI ExceptionFilter(LPEXCEPTION_POINTERS lpExceptionInfo)
     return GenerateMiniDump(lpExceptionInfo);
 }
 #pragma endregion
-TOP_APP_API void AutoDump()
+TOP_API void AutoDump()
 {
     SetUnhandledExceptionFilter(ExceptionFilter);
 }

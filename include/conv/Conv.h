@@ -1,26 +1,12 @@
 #pragma once
 
 #include <string>
-
-#ifdef _MSC_VER
-#    ifdef TOP_CONV_EXPORTS
-#        define TOP_CONV_API __declspec(dllexport)
-#    else
-#        define TOP_CONV_API __declspec(dllimport)
-#    endif
-
-#    ifdef TOP_CONV_STATIC
-#        undef TOP_CONV_API
-#        define TOP_CONV_API
-#    endif
-#else
-#    define TOP_CONV_API
-#endif
+#include "top/config/global_export.h"
 
 namespace lm {
 namespace coding {
 /// @brief 字符串编码格式转换
-class TOP_CONV_API Convert
+class TOP_API Convert
 {
 public:
     /// @brief 构造

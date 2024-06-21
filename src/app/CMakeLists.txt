@@ -8,13 +8,9 @@ endif()
 add_library(${PROJECT_NAME}
 	${PLATFORM_SOURCES}
 )
-target_compile_definitions(${PROJECT_NAME} PRIVATE
-	FULL_DUMP_INFO
-)
-if(${BUILD_SHARED_LIBS})
-	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_APP_EXPORTS)
-else()
-	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_APP_STATIC)
+if(BUILD_SHARED_LIBS)
+	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_EXPORTS)
+	target_compile_definitions(${PROJECT_NAME} PUBLIC TOP_SHARED)
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
 	$<BUILD_INTERFACE:${TOP_INCLUDE}/app>

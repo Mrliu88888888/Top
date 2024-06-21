@@ -20,8 +20,8 @@ inline auto LogLevel(const int& level)
     }
 }
 
-TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
-                      const uint32_t& maxfiles)
+TOP_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
+                  const uint32_t& maxfiles)
 {
     logger = (0 == maxfilesize)
                  ? spdlog::stdout_color_mt(logname)
@@ -40,8 +40,8 @@ TOP_LOG_API void Init(const std::string& logname, const int& level, const uint32
     }
 }
 
-TOP_LOG_API void Log(const int& level, const std::string& msg, const char* filename,
-                     const int& linenum, const char* funcname)
+TOP_API void Log(const int& level, const std::string& msg, const char* filename, const int& linenum,
+                 const char* funcname)
 {
     logger->log(spdlog::source_loc{filename, linenum, funcname}, LogLevel(level), msg);
     logger->flush();
