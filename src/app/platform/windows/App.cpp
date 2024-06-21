@@ -15,8 +15,6 @@
 
 #pragma comment(lib, "ShLwApi.Lib")
 
-#define FULL_DUMP_INFO
-
 namespace lm {
 namespace app {
 TOP_API int SingleApp()
@@ -101,11 +99,7 @@ int GenerateMiniDump(PEXCEPTION_POINTERS pExceptionPointers)
         GetCurrentProcess(),
         GetCurrentProcessId(),
         hDumpFile,
-#ifdef FULL_DUMP_INFO
         (MINIDUMP_TYPE)(MiniDumpNormal | MiniDumpWithDataSegs | MiniDumpWithFullMemory),
-#else
-        MiniDumpNormal,
-#endif
         (pExceptionPointers ? &expParam : NULL),
         NULL,
         NULL);
