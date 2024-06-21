@@ -3,9 +3,10 @@
     "concurrentqueue",
     "fmt",
     "gtest",
+    "libiconv",
     "mimalloc",
     "simpleini",
     "spdlog",
-    "libiconv"
+    "grpc"
   ]
 }

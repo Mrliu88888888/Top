@@ -51,3 +51,4 @@ export https_proxy=$proxy
 * [mimalloc](https://github.com/microsoft/mimalloc)
 * [libiconv](https://www.gnu.org/software/libiconv/)
 * [QtCipherSqlitePlugin](https://github.com/devbean/QtCipherSqlitePlugin)
+* [grpc](https://github.com/grpc/grpc)
