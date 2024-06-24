@@ -6,6 +6,7 @@ add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
 add_subdirectory(SQLiteRPC)
+add_subdirectory(VideoCamera)
 
 install(TARGETS
 	main

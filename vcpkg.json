@@ -6,9 +6,10 @@
     "gtest",
     "libiconv",
     "mimalloc",
+    "nlohmann-json",
     "protobuf",
     "simpleini",
     "spdlog",
-    "nlohmann-json"
+    "opencv4"
   ]
 }

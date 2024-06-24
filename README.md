@@ -54,3 +54,4 @@ export https_proxy=$proxy
 * [grpc](https://github.com/grpc/grpc)
 * [protobuf](https://github.com/protocolbuffers/protobuf)
 * [nlohmann_json](https://github.com/nlohmann/json)
+* [opencv](https://github.com/opencv/opencv)
