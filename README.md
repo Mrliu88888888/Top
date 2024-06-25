@@ -28,7 +28,6 @@ Top
 
 # 开发环境
 ## Linux代理
-vcpkg如果没有代理几乎无法正常下载资源，可以通过以下命令设置代理
 ```bash
 export proxy="http://192.168.80.1:7890"
 export http_proxy=$proxy
