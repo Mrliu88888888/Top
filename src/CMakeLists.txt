@@ -61,6 +61,3 @@ install(FILES
 
 	DESTINATION bin
 )
-install(CODE "
-	message(------------------hello world)
-")
