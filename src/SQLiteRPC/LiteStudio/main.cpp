@@ -1,4 +1,5 @@
 #include <qapplication.h>
+#include "LiteStudio/LiteStudio.h"
 
 /*
  *                        _oo0oo_
@@ -28,6 +29,9 @@
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
+
+    LiteStudio w;
+    w.show();
 
     return app.exec();
 }
