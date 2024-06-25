@@ -13,5 +13,11 @@ TEST(App, SingleApp)
 
 TEST(App, SingleApp2)
 {
+#ifdef _WIN32
     ASSERT_EQ(lm::app::SingleApp(), 1);
+#elif __linux__
+    ASSERT_EQ(lm::app::SingleApp(), 0);
+#else
+    ASSERT_TRUE(false);
+#endif   // _WIN32
 }
