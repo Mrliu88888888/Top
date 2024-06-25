@@ -7,9 +7,11 @@ include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
 include(cmake/util/FindDependencies.cmake)
 
-option(BUILD_TESTING "Build tests" ON)
-option(BUILD_EXAMPLES "Build examples" ON)
-option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+option(BUILD_TESTING "build tests" ON)
+option(BUILD_EXAMPLES "build examples" ON)
+option(BUILD_SHARED_LIBS "build using shared libraries" ON)
+option(BUILD_PROJ_SQLITERPC "build SQLiteRPC" ON)
+option(BUILD_PROJ_VIDEOCAMERA "build VideoCamera" ON)
 
 add_subdirectory(src)
 
@@ -34,6 +36,8 @@ install(FILES
 	DESTINATION .
 )
 
-message(STATUS "${PROJECT_NAME} Build tests: ${BUILD_TESTING}")
-message(STATUS "${PROJECT_NAME} Build examples: ${BUILD_EXAMPLES}")
-message(STATUS "${PROJECT_NAME} Build using shared libraries: ${BUILD_SHARED_LIBS}")
+message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
+message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
+message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
+message(STATUS "${PROJECT_NAME} build SQLiteRPC: ${BUILD_PROJ_SQLITERPC}")
+message(STATUS "${PROJECT_NAME} build VideoCamera: ${BUILD_PROJ_VIDEOCAMERA}")

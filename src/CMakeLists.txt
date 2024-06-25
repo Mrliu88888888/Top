@@ -5,8 +5,12 @@ add_subdirectory(qmain)
 add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
-add_subdirectory(SQLiteRPC)
-add_subdirectory(VideoCamera)
+if(BUILD_PROJ_SQLITERPC)
+	add_subdirectory(SQLiteRPC)
+endif()
+if(BUILD_PROJ_VIDEOCAMERA)
+	add_subdirectory(VideoCamera)
+endif()
 
 install(TARGETS
 	main
