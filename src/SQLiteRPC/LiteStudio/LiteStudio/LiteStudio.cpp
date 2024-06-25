@@ -25,6 +25,7 @@ LiteStudio::LiteStudio(QWidget* parent)
         }
 
         ui->teResult->append(QString("%1 %2").arg(COMMAND_START_CHARACTER).arg(ui->leSql->text()));
+        ui->leSql->clear();
 
         std::string output;
         lite_->exec(ui->leSql->text().toStdString(), &output);
