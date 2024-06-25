@@ -2,7 +2,7 @@ project(LiteRPC)
 
 set(LITE_PROTO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/proto")
 set(LITE_PROTO_FILE "lite.proto")
-set(LITE_PROTO_OUT_CPP_PATH "${CMAKE_BINARY_DIR}/include/lite/proto")
+set(LITE_PROTO_OUT_CPP_PATH "${CMAKE_BINARY_DIR}/lite/include")
 set(LITE_PROTO_OUT_CPP_FILE "lite.pb.cc")
 file(MAKE_DIRECTORY ${LITE_PROTO_OUT_CPP_PATH})
 add_custom_command(
