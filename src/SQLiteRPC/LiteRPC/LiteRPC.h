@@ -9,7 +9,7 @@
 #        define SQLITERPC_API __declspec(dllimport)
 #    endif
 #else
-define SQLITERPC_API
+#    define SQLITERPC_API
 #endif
 
 class SQLITERPC_API LiteRPC
