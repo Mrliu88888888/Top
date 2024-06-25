@@ -36,12 +36,12 @@ install(DIRECTORY
 	DESTINATION .
 )
 install(EXPORT TopConfig
-    FILE TopConfig.cmake
-    NAMESPACE Top::
-    DESTINATION share/Top
+	FILE TopConfig.cmake
+	NAMESPACE Top::
+	DESTINATION share/Top
 )
 
-FIND_TARGET_DEPENDENCIES(TARGET_DEPENDENCIES 
+FIND_TARGET_DEPENDENCIES(TARGET_DEPENDENCIES
 	main
 	qmain
 	App
@@ -55,9 +55,12 @@ if(WIN32)
 		"${EXECUTABLE_OUTPUT_PATH}/iconv-2.dll"
 	)
 endif()
-install(FILES 
+install(FILES
 	${TARGET_LIBRARIES}
 	${DEPEND_DLL}
 
 	DESTINATION bin
 )
+install(CODE "
+	message(------------------hello world)
+")

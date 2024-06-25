@@ -8,7 +8,7 @@ function useage()
 
 [[ $# < 2 ]] && useage
 
-[[ ! -e $1 ]] && echo "Not a vaild input $1" && exit 1 
+[[ ! -e $1 ]] && echo "Not a vaild input $1" && exit 1
 [[ -d $2 ]] || echo "No such directory $2 creating..."&& mkdir -p "$2"
 
 echo "Collecting the shared library dependencies for $1..."
