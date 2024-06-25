@@ -1,7 +1,7 @@
-.git/
-.vs/
-out/
-build/
-vcpkg_installed/
+/.git/
+/.vs/
+/out/
+/build/
+/vcpkg_installed/
 
-CMakePresets.json
+/CMakePresets.json
