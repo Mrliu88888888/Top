@@ -1,15 +1,25 @@
 {
-  "dependencies": [
-    "concurrentqueue",
-    "fmt",
-    "grpc",
-    "gtest",
-    "libiconv",
-    "mimalloc",
-    "nlohmann-json",
-    "protobuf",
-    "simpleini",
-    "spdlog",
-    "opencv4"
-  ]
+    "dependencies": [
+        "concurrentqueue",
+        "fmt",
+        "libiconv",
+        "mimalloc",
+        "nlohmann-json",
+        "simpleini",
+        "spdlog"
+    ],
+    "features": {
+        "test": {
+            "description": "build tests",
+            "dependencies": [ "gtest" ]
+        },
+        "sqliterpc": {
+            "description": "build SQLiteRPC",
+            "dependencies": [ "protobuf", "grpc" ]
+        },
+        "videocamera": {
+            "description": "build VideoCamera",
+            "dependencies": [ "opencv4" ]
+        }
+    }
 }

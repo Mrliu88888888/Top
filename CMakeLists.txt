@@ -1,17 +1,27 @@
 cmake_minimum_required(VERSION 3.12)
 
+option(BUILD_TESTING "build tests" ON)
+option(BUILD_EXAMPLES "build examples" ON)
+option(BUILD_SHARED_LIBS "build using shared libraries" ON)
+option(BUILD_PROJ_SQLITERPC "build SQLiteRPC" OFF)
+option(BUILD_PROJ_VIDEOCAMERA "build VideoCamera" OFF)
+
+if(BUILD_TESTING)
+	list(APPEND VCPKG_MANIFEST_FEATURES "test")
+endif()
+if(BUILD_PROJ_SQLITERPC)
+	list(APPEND VCPKG_MANIFEST_FEATURES "sqliterpc")
+endif()
+if(BUILD_PROJ_VIDEOCAMERA)
+	list(APPEND VCPKG_MANIFEST_FEATURES "videocamera")
+endif()
+
 project(Top VERSION 1.0.0)
 
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
 include(cmake/util/FindDependencies.cmake)
-
-option(BUILD_TESTING "build tests" ON)
-option(BUILD_EXAMPLES "build examples" ON)
-option(BUILD_SHARED_LIBS "build using shared libraries" ON)
-option(BUILD_PROJ_SQLITERPC "build SQLiteRPC" ON)
-option(BUILD_PROJ_VIDEOCAMERA "build VideoCamera" ON)
 
 add_subdirectory(src)
 
