@@ -2,7 +2,9 @@
 
 function useage()
 {
-    cat << Useage: bash $0 <path to the binary> <path to copy the dependencies>
+    echo
+    echo "Useage: bash $0 <path to the binary> <path to copy the dependencies>"
+    echo
     exit 1
 }
 
