@@ -17,6 +17,6 @@ if(BUILD_EXAMPLES)
 	install(TARGETS
 		${EXAMPLE_NAME}_app
 
-		RUNTIME
+		RUNTIME DESTINATION bin
 	)
 endif()

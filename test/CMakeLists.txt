@@ -13,7 +13,7 @@ install(TARGETS
 	${TEST_NAME}_conv
 	${TEST_NAME}_log
 
-	RUNTIME
+	RUNTIME DESTINATION bin
 )
 
 list(APPEND TARGET_DEPENDENCIES GTest::gtest_main)
