@@ -32,7 +32,9 @@ project(Top VERSION 1.0.0)
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
-include(cmake/util/FindDependencies.cmake)
+if(WIN32)
+	include(cmake/util/FindDependencies.cmake)
+endif()
 
 add_subdirectory(src)
 
