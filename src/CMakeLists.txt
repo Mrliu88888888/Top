@@ -62,17 +62,7 @@ if(WIN32)
 		DESTINATION bin
 	)
 elseif(UNIX)
-	install(CODE
-		"
-		foreach(tag ${INSTALL_TARGET_LIST})
-			execute_process(COMMAND
-				\"${CMAKE_SOURCE_DIR}/script/linux/depend.sh\"
-				\"${EXECUTABLE_OUTPUT_PATH}/\${tag}\"
-				\"${CMAKE_INSTALL_PREFIX}/bin\"
-			)
-		endforeach()
-		"
-	)
+	COPY_TARGET_DEPENDENCIES(INSTALL_TARGET_LIST)
 	install(DIRECTORY
 		"${CMAKE_INSTALL_PREFIX}/bin"
 		DESTINATION .

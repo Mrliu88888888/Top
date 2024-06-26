@@ -34,6 +34,8 @@ include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
 if(WIN32)
 	include(cmake/util/FindDependencies.cmake)
+elseif(UNIX)
+	include(cmake/util/CopyDependencies.cmake)
 endif()
 
 add_subdirectory(src)
