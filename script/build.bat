@@ -6,10 +6,10 @@ set BUILD_TYPE="%~1"
 set BUILD_SHARED_LIB="%~2"
 
 if %BUILD_TYPE%=="" (
-    set BUILD_TYPE="x64-relwithdebinfo"
+	set BUILD_TYPE="x64-relwithdebinfo"
 )
 if %BUILD_SHARED_LIB%=="" (
-    set BUILD_SHARED_LIB="ON"
+	set BUILD_SHARED_LIB="ON"
 )
 
 echo BUILD_TYPE: %BUILD_TYPE%
