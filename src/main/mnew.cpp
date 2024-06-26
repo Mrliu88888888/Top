@@ -4,9 +4,10 @@
 #include <string>
 #include <thread>
 
-#include <mimalloc-override.h>
-#include <mimalloc-new-delete.h>
-
+#ifdef USING_MIMALLOC
+#    include <mimalloc-override.h>
+#    include <mimalloc-new-delete.h>
+#endif
 
 #ifdef __linux__
 #    define STRCPY(DESC, LEN, SRC) strcpy(DESC, SRC)

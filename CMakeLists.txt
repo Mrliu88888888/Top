@@ -5,6 +5,14 @@ option(BUILD_EXAMPLES "build examples" ON)
 option(BUILD_SHARED_LIBS "build using shared libraries" ON)
 option(BUILD_PROJ_SQLITERPC "build SQLiteRPC" OFF)
 option(BUILD_PROJ_VIDEOCAMERA "build VideoCamera" OFF)
+option(USING_MIMALLOC "using mimalloc" OFF)
+
+message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
+message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
+message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
+message(STATUS "${PROJECT_NAME} build SQLiteRPC: ${BUILD_PROJ_SQLITERPC}")
+message(STATUS "${PROJECT_NAME} build VideoCamera: ${BUILD_PROJ_VIDEOCAMERA}")
+message(STATUS "${PROJECT_NAME} using mimalloc: ${USING_MIMALLOC}")
 
 if(BUILD_TESTING)
 	list(APPEND VCPKG_MANIFEST_FEATURES "test")
@@ -14,6 +22,9 @@ if(BUILD_PROJ_SQLITERPC)
 endif()
 if(BUILD_PROJ_VIDEOCAMERA)
 	list(APPEND VCPKG_MANIFEST_FEATURES "videocamera")
+endif()
+if(BUILD_PROJ_VIDEOCAMERA)
+	list(APPEND VCPKG_MANIFEST_FEATURES "mimalloc")
 endif()
 
 project(Top VERSION 1.0.0)
@@ -45,9 +56,3 @@ install(FILES
 
 	DESTINATION .
 )
-
-message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
-message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
-message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
-message(STATUS "${PROJECT_NAME} build SQLiteRPC: ${BUILD_PROJ_SQLITERPC}")
-message(STATUS "${PROJECT_NAME} build VideoCamera: ${BUILD_PROJ_VIDEOCAMERA}")

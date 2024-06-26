@@ -11,6 +11,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	unofficial::concurrentqueue::concurrentqueue
-	mimalloc
 	App
 )
+if(USING_MIMALLOC)
+	target_compile_definitions(${PROJECT_NAME} PRIVATE USING_MIMALLOC)
+	target_link_libraries(${PROJECT_NAME} PRIVATE mimalloc)
+endif()

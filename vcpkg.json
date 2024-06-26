@@ -3,8 +3,6 @@
         "concurrentqueue",
         "fmt",
         "libiconv",
-        "mimalloc",
-        "nlohmann-json",
         "simpleini",
         "spdlog"
     ],
@@ -20,6 +18,14 @@
         "videocamera": {
             "description": "build VideoCamera",
             "dependencies": [ "opencv4" ]
+        },
+        "mimalloc": {
+            "description": "using mimalloc",
+            "dependencies": [ "mimalloc" ]
+        },
+        "unused": {
+            "description": "unused",
+            "dependencies": [ "nlohmann-json" ]
         }
     }
 }
