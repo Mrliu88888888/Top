@@ -41,6 +41,9 @@ install(EXPORT TopConfig
 	DESTINATION share/Top
 )
 
+if(WIN32)
+	set(TOP_LIB_SUFFIX "")
+endif()
 set(INSTALL_TARGET_LIST
 	main
 	qmain
