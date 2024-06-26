@@ -29,8 +29,12 @@ else()
 endif()
 if(WIN32)
 	set(TOP_PLATFORM windows)
+	set(TOP_LIB_PREFIX "")
+	set(TOP_LIB_SUFFIX ".dll")
 elseif(UNIX)
 	set(TOP_PLATFORM linux)
+	set(TOP_LIB_PREFIX "lib")
+	set(TOP_LIB_SUFFIX ".so")
 endif()
 
 configure_file(
