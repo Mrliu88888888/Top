@@ -33,6 +33,10 @@ export proxy="http://192.168.80.1:7890"
 export http_proxy=$proxy
 export https_proxy=$proxy
 ```
+## Ubuntu
+```bash
+sudo apt install build-essential cmake ninja-build pkg-config
+```
 
 # 致谢
 * [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/)
