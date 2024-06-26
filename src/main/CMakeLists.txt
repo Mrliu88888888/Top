@@ -10,7 +10,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 	"${TOP_THIRDPARTY}/ThreadPool/include"
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
-	unofficial::concurrentqueue::concurrentqueue
+	unofficial::concurrentqueue::concurrentqueue Threads::Threads
 	App
 )
 if(USING_MIMALLOC)
