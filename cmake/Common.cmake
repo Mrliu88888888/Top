@@ -49,9 +49,3 @@ configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
 	"${CMAKE_BINARY_DIR}/include/top/global.h"
 )
-
-install(DIRECTORY
-	"${CMAKE_BINARY_DIR}/include"
-
-	DESTINATION .
-)
