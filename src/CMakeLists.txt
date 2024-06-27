@@ -1,20 +1,12 @@
 project(src)
 
 add_subdirectory(main)
-add_subdirectory(qmain)
 add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
-if(BUILD_PROJ_SQLITERPC)
-	add_subdirectory(SQLiteRPC)
-endif()
-if(BUILD_PROJ_VIDEOCAMERA)
-	add_subdirectory(VideoCamera)
-endif()
 
 install(TARGETS
 	main
-	qmain
 
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION bin
@@ -46,7 +38,6 @@ if(WIN32)
 endif()
 set(INSTALL_TARGET_LIST
 	main
-	qmain
 	${TOP_LIB_PREFIX}App${TOP_LIB_SUFFIX}
 	${TOP_LIB_PREFIX}Conv${TOP_LIB_SUFFIX}
 	${TOP_LIB_PREFIX}Log${TOP_LIB_SUFFIX}
