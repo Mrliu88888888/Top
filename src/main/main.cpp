@@ -1,13 +1,8 @@
-#include <iostream>
-
 #include "top/config/config.h"
 #include "top/config/version.h"
 
 #include "App.h"
 #include "Log.h"
-
-using std::cout;
-using std::endl;
 
 /*
  *                        _oo0oo_
@@ -39,18 +34,18 @@ int main(int argc, char* argv[])
 #ifdef _WIN32
     lm::app::AutoDump();
 #endif   // _WIN32
+
     if (!lm::app::ChangeWorkPath()) {
         return 1;
     }
+
     if (lm::app::SingleApp() != 0) {
         return 2;
     }
 
-    lm::log::Init(
-        STRING_FORMAT("log/{}.log", TOP_NAME), lm::log::LOG_LEVEL_DEBUG, 1024 * 1024 * 10, 3);
+    lm::log::Init(STRING_FORMAT("log/{}.log", TOP_NAME), lm::log::LOG_LEVEL_DEBUG, 0, 1);
 
-    cout << "hello Top " << TOP_VERSION << endl;
-    LOG_INFO("hello Top [{}]", TOP_VERSION);
+    LOG_INFO("hello {} [{}]", TOP_NAME, TOP_VERSION);
 
     return 0;
 }
