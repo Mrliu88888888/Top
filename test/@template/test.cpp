@@ -2,5 +2,5 @@
 
 TEST(demo, func)
 {
-    ASSERT_EQ(true);
+    ASSERT_TRUE(true);
 }
