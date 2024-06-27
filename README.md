@@ -27,6 +27,10 @@ Top
 ```
 
 # 开发环境
+* [Qt](https://www.qt.io/)
+* [CMake](https://cmake.org/)
+* [ninja](https://github.com/ninja-build/ninja)
+* [vcpkg](https://github.com/microsoft/vcpkg)
 ## Linux代理
 ```bash
 export proxy="http://192.168.80.1:7890"
@@ -38,10 +42,39 @@ export https_proxy=$proxy
 sudo apt install build-essential cmake ninja-build pkg-config
 ```
 
+# 使用
+## 下载
+```bash
+git clone --recursive https://github.com/Mrliu88888888/Top.git
+# or
+git clone https://github.com/Mrliu88888888/Top.git
+cd Top
+git submodule update --init --recursive
+```
+## 编译
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+## 测试
+```bash
+ctest
+```
+## 打包
+```bash
+cpack
+```
+## 自动化脚本
+Windows编译脚本: [build.bat](script/build.bat)<br>
+Linux编译脚本: [build.sh](script/build.sh)
+
 # 致谢
 * [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/)
 * [Qt](https://www.qt.io/)
 * [CMake](https://cmake.org/)
+* [ninja](https://github.com/ninja-build/ninja)
 * [vcpkg](https://github.com/microsoft/vcpkg)
 * [Git](https://www.git-scm.com/)
 * [LLVM](https://clang.llvm.org/)
