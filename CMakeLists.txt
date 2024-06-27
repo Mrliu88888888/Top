@@ -5,11 +5,6 @@ option(BUILD_EXAMPLES "build examples" ON)
 option(BUILD_SHARED_LIBS "build using shared libraries" ON)
 option(USING_MIMALLOC "using mimalloc" OFF)
 
-message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
-message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
-message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
-message(STATUS "${PROJECT_NAME} using mimalloc: ${USING_MIMALLOC}")
-
 if(BUILD_TESTING)
 	list(APPEND VCPKG_MANIFEST_FEATURES "test")
 endif()
@@ -18,6 +13,11 @@ if(USING_MIMALLOC)
 endif()
 
 project(Top VERSION 1.0.0)
+
+message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
+message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
+message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
+message(STATUS "${PROJECT_NAME} using mimalloc: ${USING_MIMALLOC}")
 
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
