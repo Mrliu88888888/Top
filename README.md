@@ -8,26 +8,26 @@
 # 项目结构
 ```txt
 Top
-├── cmake
-├── doc
-├── example
-├── include
-├── script
-├── src
-├── test
-├── ThirdParty
-├── .clang-format
-├── .clang-tidy
-├── .editorconfig
-├── CMakeLists.txt
-├── CMakePresets.json
-├── LICENSE
-├── README.md
-└── vcpkg.json
+├── cmake                # CMake相关的配置文件和脚本
+├── doc                  # 项目文档 模板文件 整理资料
+├── example              # 示例代码
+├── include              # 公共头文件
+├── script               # 脚本文件
+├── src                  # 源代码
+├── test                 # 测试代码
+├── ThirdParty           # 存放第三方库 工具 设置等
+├── .clang-format        # 格式化配置文件
+├── .clang-tidy          # 静态分析配置文件
+├── .editorconfig        # 编辑器配置文件
+├── CMakeLists.txt       # CMake项目
+├── CMakePresets.json    # CMake预设配置文件
+├── LICENSE              # 许可证文件
+├── README.md            # 说明文档
+└── vcpkg.json           # 管理第三方依赖配置文件
 ```
 
 # 开发环境
-* [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](ThirdParty/Visual%20Studio%202022)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](ThirdParty/Visual%20Studio%202022/README.md)
 * [Qt](https://www.qt.io/)
 * [CMake](https://cmake.org/)
 * [ninja](https://github.com/ninja-build/ninja)
