@@ -27,6 +27,7 @@ Top
 ```
 
 # 开发环境
+* [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](ThirdParty/Visual%20Studio%202022)
 * [Qt](https://www.qt.io/)
 * [CMake](https://cmake.org/)
 * [ninja](https://github.com/ninja-build/ninja)
