@@ -31,6 +31,8 @@ Top
 主线分支
 ## simple
 轻量简单的，可以此作为CMake项目开发模板
+## simple-core
+轻量简单的，可以此作为CMake项目开发模板，它与simple区别是没有导出include和lib，仅仅作为app而不是第三方库
 
 # 开发环境
 * [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](https://github.com/Mrliu88888888/TopThirdParty/blob/master/Visual%20Studio%202022/README.md)
