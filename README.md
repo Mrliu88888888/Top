@@ -26,6 +26,12 @@ Top
 └── vcpkg.json           # 管理第三方依赖配置文件
 ```
 
+# 项目分支
+## main
+主线分支
+## simple
+轻量简单的，可以此作为CMake项目开发模板
+
 # 开发环境
 * [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](https://github.com/Mrliu88888888/TopThirdParty/blob/master/Visual%20Studio%202022/README.md)
 * [Qt](https://www.qt.io/)
@@ -46,9 +52,9 @@ sudo apt install build-essential cmake ninja-build pkg-config
 # 使用
 ## 下载
 ```bash
-git clone --recursive https://github.com/Mrliu88888888/Top.git
+git clone --recursive https://github.com/Mrliu88888888/Top.git -b main
 # or
-git clone https://github.com/Mrliu88888888/Top.git
+git clone https://github.com/Mrliu88888888/Top.git -b main
 cd Top
 git submodule update --init --recursive
 ```
