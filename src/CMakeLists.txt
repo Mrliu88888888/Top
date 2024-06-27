@@ -2,7 +2,6 @@ project(src)
 
 add_subdirectory(main)
 add_subdirectory(app)
-add_subdirectory(conv)
 add_subdirectory(log)
 
 install(TARGETS
@@ -14,7 +13,6 @@ install(TARGETS
 )
 install(TARGETS
 	App
-	Conv
 	Log
 
 	EXPORT TopConfig
@@ -39,7 +37,6 @@ endif()
 set(INSTALL_TARGET_LIST
 	main
 	${TOP_LIB_PREFIX}App${TOP_LIB_SUFFIX}
-	${TOP_LIB_PREFIX}Conv${TOP_LIB_SUFFIX}
 	${TOP_LIB_PREFIX}Log${TOP_LIB_SUFFIX}
 )
 if(WIN32)

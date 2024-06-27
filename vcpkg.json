@@ -1,9 +1,6 @@
 {
     "dependencies": [
-        "concurrentqueue",
         "fmt",
-        "libiconv",
-        "simpleini",
         "spdlog"
     ],
     "features": {
@@ -14,10 +11,6 @@
         "mimalloc": {
             "description": "using mimalloc",
             "dependencies": [ "mimalloc" ]
-        },
-        "unused": {
-            "description": "unused",
-            "dependencies": [ "nlohmann-json" ]
         }
     }
 }
