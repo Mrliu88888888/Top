@@ -7,7 +7,6 @@ if(UNIX)
 	set(CMAKE_CXX_FLAGS "-Wl,-rpath=./")
 elseif(MSVC)
 	add_compile_options("/utf-8")
-	add_compile_definitions(UNICODE _UNICODE)
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
