@@ -7,7 +7,6 @@ if(UNIX)
 	set(CMAKE_CXX_FLAGS "-Wl,-rpath=./")
 elseif(MSVC)
 	add_compile_options("/utf-8")
-	add_compile_definitions(UNICODE _UNICODE)
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
@@ -48,4 +47,10 @@ configure_file(
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
 	"${CMAKE_BINARY_DIR}/include/top/global.h"
+)
+
+install(DIRECTORY
+	"${CMAKE_BINARY_DIR}/include"
+
+	DESTINATION .
 )
