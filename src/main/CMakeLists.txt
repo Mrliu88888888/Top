@@ -7,7 +7,7 @@ add_executable(${PROJECT_NAME}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
 	${SIMPLEINI_INCLUDE_DIRS}
-	"${TOP_THIRDPARTY}/ThreadPool/include"
+	${TOP_THREADPOOL_INCLUDE_DIRS}
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	unofficial::concurrentqueue::concurrentqueue Threads::Threads
