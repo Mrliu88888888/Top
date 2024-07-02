@@ -1,5 +1,2 @@
 find_package(spdlog CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
-if(USING_MIMALLOC)
-	find_package(mimalloc CONFIG REQUIRED)
-endif()
