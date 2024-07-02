@@ -68,6 +68,7 @@ configure_file(
 
 install(DIRECTORY
 	${TOP_CONFIG_INCLUDE}
+	${TOP_EXPORT_INCLUDE}
 
 	DESTINATION .
 )
