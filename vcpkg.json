@@ -7,10 +7,6 @@
         "test": {
             "description": "build tests",
             "dependencies": [ "gtest" ]
-        },
-        "mimalloc": {
-            "description": "using mimalloc",
-            "dependencies": [ "mimalloc" ]
         }
     }
 }
