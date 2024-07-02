@@ -47,4 +47,6 @@ install(DIRECTORY
 	FILES_MATCHING
 	PATTERN "*.exe"
 	PATTERN "*.dll"
+	PATTERN "*.rcc"
+	PATTERN "*.qm"
 )

@@ -12,14 +12,11 @@ add_custom_target(APP_RCC ALL DEPENDS ${APP_RCC_FILE})
 add_executable(${PROJECT_NAME} "main.cpp")
 add_dependencies(${PROJECT_NAME} APP_RCC)
 target_link_libraries(${PROJECT_NAME} PRIVATE
-	Qt5::Core
-	Qt5::Gui
-	Qt5::Widgets
+	Qt5::Core Qt5::Gui Qt5::Widgets
 	App
 )
 
-install(FILES
-	${APP_RCC_FILE}
-
-	DESTINATION bin/rcc
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+	COMMAND windeployqt.exe ${PROJECT_NAME}.exe
+	WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 )
