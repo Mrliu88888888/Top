@@ -16,7 +16,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	App
 )
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND windeployqt.exe ${PROJECT_NAME}.exe
-	WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+find_program(WINDEPLOYQT windeployqt)
+install(CODE
+	"
+	execute_process(COMMAND ${WINDEPLOYQT} ${PROJECT_NAME}.exe
+		WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+	)
+	"
 )
