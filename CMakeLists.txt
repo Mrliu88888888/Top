@@ -17,11 +17,6 @@ message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIB
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
-if(WIN32)
-	include(cmake/util/FindDependencies.cmake)
-elseif(UNIX)
-	include(cmake/util/CopyDependencies.cmake)
-endif()
 
 add_subdirectory(src)
 
