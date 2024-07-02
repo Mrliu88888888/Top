@@ -13,14 +13,6 @@ if(BUILD_PROJ_VIDEOCAMERA)
 endif()
 
 install(TARGETS
-	main
-	qmain
-
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION bin
-	ARCHIVE DESTINATION lib
-)
-install(TARGETS
 	App
 	Conv
 	Log

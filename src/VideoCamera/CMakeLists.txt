@@ -9,9 +9,3 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	opencv_core opencv_highgui opencv_videoio opencv_imgcodecs opencv_imgproc
 )
-
-install(TARGETS
-	${PROJECT_NAME}
-
-	RUNTIME DESTINATION ${PROJECT_NAME}
-)
