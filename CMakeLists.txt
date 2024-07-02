@@ -8,7 +8,7 @@ if(BUILD_TESTING)
 	list(APPEND VCPKG_MANIFEST_FEATURES "test")
 endif()
 
-project(Top VERSION 1.0.0)
+project(Top VERSION 1.1.0)
 
 message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
 message(STATUS "${PROJECT_NAME} build examples: ${BUILD_EXAMPLES}")
@@ -17,11 +17,6 @@ message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIB
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
-if(WIN32)
-	include(cmake/util/FindDependencies.cmake)
-elseif(UNIX)
-	include(cmake/util/CopyDependencies.cmake)
-endif()
 
 add_subdirectory(src)
 
