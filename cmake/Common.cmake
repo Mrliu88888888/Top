@@ -1,5 +1,4 @@
 set(TOP_THIRDPARTY "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
-set(TOP_EXPORT_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set(TOP_CONFIG_INCLUDE "${CMAKE_BINARY_DIR}/include")
 if(CMAKE_CL_64)
 	set(TOP_ARCH "x64")
@@ -64,10 +63,4 @@ configure_file(
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
 	"${TOP_CONFIG_INCLUDE}/top/global.h"
-)
-
-install(DIRECTORY
-	${TOP_CONFIG_INCLUDE}
-
-	DESTINATION .
 )
