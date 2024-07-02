@@ -5,13 +5,6 @@ add_subdirectory(app)
 add_subdirectory(log)
 
 install(TARGETS
-	main
-
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION bin
-	ARCHIVE DESTINATION lib
-)
-install(TARGETS
 	App
 	Log
 
