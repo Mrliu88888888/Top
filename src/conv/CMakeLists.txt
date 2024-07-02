@@ -9,9 +9,9 @@ if(BUILD_SHARED_LIBS)
 	target_compile_definitions(${PROJECT_NAME} PUBLIC TOP_SHARED)
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
-	$<BUILD_INTERFACE:${TOP_INCLUDE}/conv>
+	$<BUILD_INTERFACE:${TOP_EXPORT_INCLUDE}/conv>
 	$<INSTALL_INTERFACE:include/conv>
 
-	$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
+	$<BUILD_INTERFACE:${TOP_CONFIG_INCLUDE}>
 	$<INSTALL_INTERFACE:include>
 )

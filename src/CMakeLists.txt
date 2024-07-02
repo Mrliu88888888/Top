@@ -30,13 +30,13 @@ install(TARGETS
 	LIBRARY DESTINATION bin
 	ARCHIVE DESTINATION lib
 )
-install(DIRECTORY
-	${TOP_INCLUDE}
-
-	DESTINATION .
-)
 install(EXPORT TopConfig
 	FILE TopConfig.cmake
 	NAMESPACE Top::
 	DESTINATION share/Top
+)
+install(DIRECTORY
+	${TOP_EXPORT_INCLUDE}
+
+	DESTINATION .
 )
