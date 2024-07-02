@@ -7,7 +7,7 @@ if(BUILD_TESTING)
 	list(APPEND VCPKG_MANIFEST_FEATURES "test")
 endif()
 
-project(Top VERSION 1.0.0)
+project(Top VERSION 1.1.0)
 
 message(STATUS "${PROJECT_NAME} build tests: ${BUILD_TESTING}")
 message(STATUS "${PROJECT_NAME} build using shared libraries: ${BUILD_SHARED_LIBS}")
