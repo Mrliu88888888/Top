@@ -21,7 +21,10 @@ install(DIRECTORY
 	DESTINATION bin
 	FILES_MATCHING
 	PATTERN "*.exe"
+	PATTERN "*.out"
 	PATTERN "*.dll"
+	PATTERN "*.so"
+	PATTERN "*.so.*"
 	PATTERN "*.rcc"
 	PATTERN "*.qm"
 )
