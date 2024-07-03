@@ -16,11 +16,29 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	App
 )
 
-find_program(WINDEPLOYQT windeployqt)
-install(CODE
-	"
-	execute_process(COMMAND ${WINDEPLOYQT} ${PROJECT_NAME}.exe
-		WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+if(WIN32)
+	find_program(WINDEPLOYQT windeployqt.exe)
+	install(CODE
+		"
+		if(NOT DEFINED ENV{WINDEPLOYQT})
+			message(FATAL_ERROR \"windeployqt not found\")
+		endif()
+		execute_process(COMMAND ${WINDEPLOYQT} ${PROJECT_NAME}.exe
+			WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+		)
+		"
 	)
-	"
-)
+elseif(UNIX)
+	find_program(LINUXDEPLOY LinuxDeploy.sh HINTS "${CMAKE_SOURCE_DIR}/script/linux")
+	install(CODE
+		"
+		execute_process(COMMAND ${LINUXDEPLOY} ${PROJECT_NAME} .
+			WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+			RESULT_VARIABLE RETURN_CODE
+		)
+		if(NOT RETURN_CODE EQUAL 0)
+			message(FATAL_ERROR \"LinuxDeploy.sh Return Code: \${RETURN_CODE}\")
+		endif()
+		"
+	)
+endif()

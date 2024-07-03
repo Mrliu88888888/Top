@@ -13,6 +13,8 @@ if(BUILD_PROJ_VIDEOCAMERA)
 endif()
 
 install(TARGETS
+	main
+	qmain
 	App
 	Conv
 	Log
@@ -33,7 +35,10 @@ install(DIRECTORY
 	DESTINATION bin
 	FILES_MATCHING
 	PATTERN "*.exe"
+	PATTERN "*.out"
 	PATTERN "*.dll"
+	PATTERN "*.so"
+	PATTERN "*.so.*"
 	PATTERN "*.rcc"
 	PATTERN "*.qm"
 )

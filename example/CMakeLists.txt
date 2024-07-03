@@ -12,3 +12,13 @@ if(NOT BUILD_EXAMPLES)
 endif()
 
 add_subdirectory(app)
+
+if(BUILD_EXAMPLES)
+	install(TARGETS
+		${EXAMPLE_NAME}_app
+
+		RUNTIME DESTINATION bin
+		LIBRARY DESTINATION bin
+		ARCHIVE DESTINATION lib
+	)
+endif()
