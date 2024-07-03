@@ -1,2 +1,3 @@
-find_package(spdlog CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+if(BUILD_TESTING)
+	find_package(GTest CONFIG REQUIRED)
+endif()

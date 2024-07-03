@@ -1,7 +1,5 @@
 {
     "dependencies": [
-        "fmt",
-        "spdlog"
     ],
     "features": {
         "test": {

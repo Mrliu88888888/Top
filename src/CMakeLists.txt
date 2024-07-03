@@ -1,8 +1,6 @@
 project(src)
 
-add_subdirectory(main)
-add_subdirectory(app)
-add_subdirectory(log)
+add_subdirectory(TODO)
 
 install(DIRECTORY
 	${EXECUTABLE_OUTPUT_PATH}/
