@@ -1,23 +1,20 @@
 project(src)
 
-add_subdirectory(main)
-add_subdirectory(app)
-add_subdirectory(log)
+# add_subdirectory(TODO)
 
 install(TARGETS
-	App
-	Log
+	# TODO
 
 	EXPORT TopConfig
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION bin
 	ARCHIVE DESTINATION lib
 )
-install(EXPORT TopConfig
-	FILE TopConfig.cmake
-	NAMESPACE Top::
-	DESTINATION share/Top
-)
+# install(EXPORT TopConfig
+# 	FILE TopConfig.cmake
+# 	NAMESPACE Top::
+# 	DESTINATION share/Top
+# )
 install(DIRECTORY
 	${EXECUTABLE_OUTPUT_PATH}/
 
