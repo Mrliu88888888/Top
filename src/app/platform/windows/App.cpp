@@ -25,9 +25,14 @@ TOP_API int SingleApp()
 
 TOP_API bool ChangeWorkPath()
 {
-    TCHAR path[MAX_PATH] = {0};
+    TCHAR path[MAX_PATH] = { 0 };
     GetModuleFileName(NULL, path, MAX_PATH);
-    return (PathRemoveFileSpec(path) == TRUE) ? (_tchdir(path) == 0) : false;
+    auto pChr = _tcsrchr(path, _T('\\'));
+    if (pChr == NULL) {
+        return false;
+    }
+    *pChr = _T('\0');
+    return SetCurrentDirectory(path) == TRUE;
 }
 
 TOP_API void SetConsoleCharsetUTF8()
