@@ -20,3 +20,43 @@ TEST(connectionpool, all_no_thread)
     const auto free = connPool.freeConnection(conn);
     ASSERT_TRUE(free);
 }
+
+TEST(connectionpool, multi_thread)
+{
+    ConnectionPool<Conn> connPool(0);
+
+    std::thread([&connPool]() {
+        for (int i = 0; i < 100; ++i) {
+            connPool.addConnection(new Conn());
+        }
+    }).detach();
+
+    std::thread([&connPool]() {
+        bool flag = false;
+        for (;;) {
+            auto conn = connPool.getConnection();
+            if (conn == nullptr) {
+                continue;
+            }
+            if (flag) {
+                connPool.freeConnection(conn);
+            }
+            else {
+                delete conn;
+            }
+
+            flag = !flag;
+        }
+    }).detach();
+
+    for (;;) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        const auto size = connPool.sizeApprox();
+        std::cout << size << std::endl;
+        if (size == 0) {
+            break;
+        }
+    }
+
+    ASSERT_TRUE(true);
+}

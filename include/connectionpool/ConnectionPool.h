@@ -35,6 +35,14 @@ public:
         return iter->second.enqueue(conn);
     }
 
+    auto sizeApprox(const std::string& id = "")
+    {
+        std::shared_lock<std::shared_mutex> lck(mutConnectionMap_);
+
+        const auto iter = connectionMap_.find(id);
+        return (iter == connectionMap_.end()) ? -1 : iter->second.size_approx();
+    }
+
     bool addConnection(T* conn, const std::string& id = "")
     {
         std::unique_lock<std::shared_mutex> lck(mutConnectionMap_);
