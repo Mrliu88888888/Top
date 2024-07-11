@@ -4,6 +4,7 @@ add_executable(${PROJECT_NAME}
 	"main.cpp"
 	"pcm.cpp"
 	"mnew.cpp"
+	"connpool.cpp"
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
 	${SIMPLEINI_INCLUDE_DIRS}
@@ -11,7 +12,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	unofficial::concurrentqueue::concurrentqueue Threads::Threads
-	App
+	App ConnectionPool
 )
 if(USING_MIMALLOC)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE USING_MIMALLOC)
