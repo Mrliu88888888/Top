@@ -24,6 +24,21 @@ public:
                                                                                         : nullptr;
     }
 
+    std::shared_ptr<T> getConnectionAndAutoRelease(const std::string& id = "")
+    {
+        std::shared_lock<std::shared_mutex> lck(mutConnectionMap_);
+
+        const auto iter = connectionMap_.find(id);
+        if (iter == connectionMap_.end()) {
+            return nullptr;
+        }
+        T* conn = nullptr;
+        return iter->second.wait_dequeue_timed(conn, std::chrono::seconds(timeoutSec_))
+                   ? std::shared_ptr<T>(conn,
+                                        [this, id](T* conn) { this->freeConnection(conn, id); })
+                   : nullptr;
+    }
+
     bool freeConnection(T* conn, const std::string& id = "")
     {
         std::shared_lock<std::shared_mutex> lck(mutConnectionMap_);
