@@ -89,3 +89,20 @@ TEST(connectionpool, multi_thread)
 
     ASSERT_TRUE(true);
 }
+
+TEST(connectionpool, auto_release)
+{
+    ConnectionPool<Conn> connPool(0);
+    connPool.addConnection(new Conn(10086));
+
+    {
+        auto conn = connPool.getConnectionAndAutoRelease();
+        ASSERT_EQ(conn.use_count(), 1);
+
+        auto p = conn.get();
+        ASSERT_EQ(*p, 10086);
+
+        ASSERT_EQ(connPool.sizeApprox(), 0);
+    }
+    ASSERT_EQ(connPool.sizeApprox(), 1);
+}
