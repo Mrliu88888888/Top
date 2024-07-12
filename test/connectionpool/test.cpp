@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
 #include "ConnectionPool.h"
 
-class Conn
-{};
+using Conn = int;
 
 TEST(connectionpool, all_no_thread)
 {
@@ -23,39 +22,69 @@ TEST(connectionpool, all_no_thread)
 
 TEST(connectionpool, multi_thread)
 {
-    ConnectionPool<Conn> connPool(0);
+    ConnectionPool<Conn>     connPool(0);
+    std::vector<std::thread> thpool;
+    std::atomic<bool>        stop  = false;
+    const int                thnum = 3;
 
-    std::thread([&connPool]() {
-        for (int i = 0; i < 100; ++i) {
-            connPool.addConnection(new Conn());
-        }
-    }).detach();
+    for (int i = 0; i < thnum; ++i)
+        thpool.emplace_back(std::thread([&connPool, &stop]() {
+            for (;;) {
+                if (stop) {
+                    break;
+                }
 
-    std::thread([&connPool]() {
-        bool flag = false;
+                connPool.addConnection(new Conn());
+            }
+        }));
+
+    for (int i = 0; i < thnum; ++i)
+        thpool.emplace_back(std::thread([&connPool, &stop]() {
+            bool flag = false;
+            for (;;) {
+                if (stop) {
+                    break;
+                }
+
+                auto conn = connPool.getConnection();
+                if (conn == nullptr) {
+                    continue;
+                }
+                if (flag) {
+                    connPool.freeConnection(conn);
+                }
+                else {
+                    delete conn;
+                }
+
+                flag = !flag;
+            }
+        }));
+
+    thpool.emplace_back(std::thread([&connPool, &stop]() {
         for (;;) {
-            auto conn = connPool.getConnection();
-            if (conn == nullptr) {
-                continue;
-            }
-            if (flag) {
-                connPool.freeConnection(conn);
-            }
-            else {
-                delete conn;
+            if (stop) {
+                break;
             }
 
-            flag = !flag;
+            // printf("conn pool size: %lld\n", connPool.sizeApprox());
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
-    }).detach();
+    }));
 
+    printf("th pool size: %lld\n", thpool.size());
+
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    stop = true;
+    for (auto& th : thpool) {
+        th.join();
+    }
     for (;;) {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        const auto size = connPool.sizeApprox();
-        std::cout << size << std::endl;
-        if (size == 0) {
+        auto conn = connPool.getConnection();
+        if (conn == nullptr) {
             break;
         }
+        delete conn;
     }
 
     ASSERT_TRUE(true);
