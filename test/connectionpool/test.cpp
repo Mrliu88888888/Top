@@ -67,12 +67,13 @@ TEST(connectionpool, multi_thread)
                 break;
             }
 
-            // printf("conn pool size: %lld\n", connPool.sizeApprox());
+            const auto size = connPool.sizeApprox();
+            // printf("conn pool size: %lld\n", size);
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }));
 
-    printf("th pool size: %lld\n", thpool.size());
+    // printf("th pool size: %lld\n", thpool.size());
 
     std::this_thread::sleep_for(std::chrono::seconds(10));
     stop = true;
