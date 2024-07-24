@@ -2,7 +2,7 @@ project(src)
 
 add_subdirectory(main)
 add_subdirectory(qmain)
-add_subdirectory(qmlmain)
+add_subdirectory(qmlchatui)
 add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
@@ -17,7 +17,7 @@ endif()
 install(TARGETS
 	main
 	qmain
-	qmlmain
+	qmlchatui
 	App
 	Conv
 	Log
