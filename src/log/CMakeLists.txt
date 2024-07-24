@@ -10,7 +10,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	$<BUILD_INTERFACE:${TOP_EXPORT_INCLUDE}/log>
 	$<INSTALL_INTERFACE:include/log>
 
-	$<BUILD_INTERFACE:${TOP_CONFIG_INCLUDE}>
+	$<BUILD_INTERFACE:${TOP_BINARY_INCLUDE}>
 	$<INSTALL_INTERFACE:include>
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)

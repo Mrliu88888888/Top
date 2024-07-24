@@ -1,6 +1,6 @@
 set(TOP_THIRDPARTY "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(TOP_EXPORT_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
-set(TOP_CONFIG_INCLUDE "${CMAKE_BINARY_DIR}/include")
+set(TOP_BINARY_INCLUDE "${CMAKE_BINARY_DIR}/include")
 if(CMAKE_CL_64)
 	set(TOP_ARCH "x64")
 else()
@@ -59,19 +59,19 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
-	"${TOP_CONFIG_INCLUDE}/top/config/version.h"
+	"${TOP_BINARY_INCLUDE}/top/config/version.h"
 )
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
-	"${TOP_CONFIG_INCLUDE}/top/config/config.h"
+	"${TOP_BINARY_INCLUDE}/top/config/config.h"
 )
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
-	"${TOP_CONFIG_INCLUDE}/top/global.h"
+	"${TOP_BINARY_INCLUDE}/top/global.h"
 )
 
 install(DIRECTORY
-	${TOP_CONFIG_INCLUDE}
+	${TOP_BINARY_INCLUDE}
 	${TOP_EXPORT_INCLUDE}
 
 	DESTINATION .
