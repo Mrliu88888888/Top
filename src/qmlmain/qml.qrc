@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/MyToolButton.qml</file>
+        <file>qml/WeChat.qml</file>
+    </qresource>
+</RCC>
