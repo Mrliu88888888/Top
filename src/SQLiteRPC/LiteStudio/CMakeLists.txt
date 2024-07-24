@@ -5,6 +5,6 @@ add_executable(${PROJECT_NAME}
 	"LiteStudio/LiteStudio.cpp"
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
-	Qt5::Core Qt5::Gui Qt5::Widgets
+	${QT}::Core ${QT}::Gui ${QT}::Widgets
 	LiteRPC
 )

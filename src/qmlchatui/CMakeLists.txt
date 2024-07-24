@@ -1,7 +1,7 @@
 project(qmlchatui)
 
 add_executable(${PROJECT_NAME} "main.cpp" "qml.qrc")
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${QT}::Quick)
 
 if(WIN32)
 	find_program(WINDEPLOYQT windeployqt.exe)
