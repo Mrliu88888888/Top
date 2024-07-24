@@ -5,9 +5,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Quick)
 
 if(WIN32)
 	find_program(WINDEPLOYQT windeployqt.exe)
+	find_path(QT_BIN_PATH qmake.exe)
 	install(CODE
 		"
-		execute_process(COMMAND ${WINDEPLOYQT} --qmldir todo ${PROJECT_NAME}.exe
+		execute_process(COMMAND ${WINDEPLOYQT} --qmldir ${QT_BIN_PATH}/../qml ${PROJECT_NAME}.exe
 			WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 			RESULT_VARIABLE RETURN_CODE
 		)
