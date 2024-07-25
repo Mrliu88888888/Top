@@ -1,6 +1,6 @@
 project(qmlchatui)
 
-add_executable(${PROJECT_NAME} "main.cpp" "qml.qrc")
+add_executable(${PROJECT_NAME} "main.cpp" "res.qrc" "qml.qrc")
 target_link_libraries(${PROJECT_NAME} PRIVATE ${QT}::Quick)
 
 if(WIN32)

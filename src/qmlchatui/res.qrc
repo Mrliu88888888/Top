@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/fly.png</file>
+        <file>res/hot_spots.png</file>
+        <file>res/wlan.png</file>
+    </qresource>
+    <qresource prefix="/chat">
+        <file>res/chat/add.png</file>
+        <file>res/chat/applets.png</file>
+        <file>res/chat/chat.png</file>
+        <file>res/chat/close.png</file>
+        <file>res/chat/collect.png</file>
+        <file>res/chat/emj.png</file>
+        <file>res/chat/file.png</file>
+        <file>res/chat/friend.png</file>
+        <file>res/chat/look.png</file>
+        <file>res/chat/max.png</file>
+        <file>res/chat/min.png</file>
+        <file>res/chat/more.png</file>
+        <file>res/chat/phone.png</file>
+        <file>res/chat/pin.png</file>
+        <file>res/chat/record.png</file>
+        <file>res/chat/screenshot.png</file>
+        <file>res/chat/sd.png</file>
+        <file>res/chat/search.png</file>
+        <file>res/chat/wfile.png</file>
+        <file>res/chat/max2.png</file>
+    </qresource>
+</RCC>
