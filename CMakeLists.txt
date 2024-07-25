@@ -32,6 +32,7 @@ message(STATUS "${PROJECT_NAME} using mimalloc: ${USING_MIMALLOC}")
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
+include(cmake/Utils.cmake)
 
 add_subdirectory(src)
 
