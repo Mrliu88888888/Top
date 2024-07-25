@@ -15,9 +15,6 @@ if(BUILD_PROJ_VIDEOCAMERA)
 endif()
 
 install(TARGETS
-	main
-	qmain
-	qmlchatui
 	App
 	Conv
 	Log
@@ -31,17 +28,6 @@ install(EXPORT TopConfig
 	FILE TopConfig.cmake
 	NAMESPACE Top::
 	DESTINATION share/Top
-)
-install(DIRECTORY
-	${EXECUTABLE_OUTPUT_PATH}/
-
-	DESTINATION bin
-	FILES_MATCHING
-	PATTERN "*"
-	PATTERN "*.exp" EXCLUDE
-	PATTERN "*.ilk" EXCLUDE
-	PATTERN "*.lib" EXCLUDE
-	PATTERN "*.pdb" EXCLUDE
 )
 if(WIN32)
 	install(CODE
@@ -73,3 +59,14 @@ elseif(UNIX)
 		"
 	)
 endif()
+install(DIRECTORY
+	${EXECUTABLE_OUTPUT_PATH}/
+
+	DESTINATION bin
+	FILES_MATCHING
+	PATTERN "*"
+	PATTERN "*.exp" EXCLUDE
+	PATTERN "*.ilk" EXCLUDE
+	PATTERN "*.lib" EXCLUDE
+	PATTERN "*.pdb" EXCLUDE
+)
