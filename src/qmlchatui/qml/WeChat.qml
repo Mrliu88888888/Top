@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import Qt.labs.platform 1.1
+import QtQuick.Dialogs 1.3
 
 Window {
     id: root
@@ -459,6 +460,12 @@ Window {
                 base: 0.9
                 enteredColor: "#00000000"
                 iconImage: "qrc:/chat/res/chat/file.png"
+                onMyClicked: selectFile.open()
+
+                FileDialog {
+                    id: selectFile
+                    folder: shortcuts.desktop
+                }
             }
             MyToolButton {
                 width: parent.height
