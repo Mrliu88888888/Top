@@ -112,6 +112,25 @@ Window {
                 base: 0.7
                 enteredColor: "#00000000"
                 iconImage: "qrc:/chat/res/chat/more.png"
+                onMyClicked: popupMore.opened ? popupMore.close() : popupMore.open()
+
+                Popup {
+                    id: popupMore
+                    x: parent.width + (chatMenu.width - parent.width) / 2 + 1
+                    y: parent.height - height
+                    width: 170
+                    height: 180
+                    padding: 0
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                    Rectangle {
+                        anchors.fill: parent
+                        width: parent.width
+                        height: 60
+                        color: "#2A2A2A"
+                        border.width: 0
+                    }
+                }
             }
         }
     }
