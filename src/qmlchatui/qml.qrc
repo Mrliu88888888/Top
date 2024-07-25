@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>qml/MyToolButton.qml</file>
         <file>qml/WeChat.qml</file>
+        <file>qml/ChatAvatar.qml</file>
     </qresource>
 </RCC>

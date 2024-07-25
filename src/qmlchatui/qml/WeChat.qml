@@ -45,10 +45,29 @@ Window {
             anchors.topMargin: 20
             spacing: 15
 
-            Image {
+            MyToolButton {
                 width: 45
                 height: 45
-                source: "qrc:/chat/res/chat/sd.png"
+                base: 1
+                enteredColor: "#00000000"
+                iconImage: "qrc:/chat/res/chat/sd.png"
+                onMyClicked: {
+                    popupAvatar.x = x
+                    popupAvatar.y = y
+                    popupAvatar.opened ? popupAvatar.close() : popupAvatar.open()
+                }
+
+                Popup {
+                    id: popupAvatar
+                    width: 370
+                    height: 300
+                    padding: 0
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                    ChatAvatar {
+                        anchors.fill: parent
+                    }
+                }
             }
             MyToolButton {
                 width: 45

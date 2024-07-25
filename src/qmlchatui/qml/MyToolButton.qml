@@ -6,7 +6,7 @@ Rectangle {
     property color exitedColor: "#00000000"
     property url iconImage: ""
     property real base: 0.5
-    signal myClicked
+    signal myClicked(real x, real y)
 
     color: exitedColor
 
@@ -22,7 +22,7 @@ Rectangle {
         onEntered: parent.color = enteredColor
         onExited: parent.color = exitedColor
         onClicked: {
-            myClicked()
+            myClicked(mouseX, mouseY)
         }
     }
 }
