@@ -453,6 +453,41 @@ Window {
                 base: 0.9
                 enteredColor: "#00000000"
                 iconImage: "qrc:/chat/res/chat/emj.png"
+                onMyClicked: popupEmj.opened ? popupEmj.close() : popupEmj.open()
+
+                Popup {
+                    id: popupEmj
+                    x: -width / 2
+                    y: -height
+                    width: 470
+                    height: 480
+                    padding: 0
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                    Item {
+                        anchors.fill: parent
+
+                        Canvas {
+                            anchors.fill: parent
+
+                            onPaint: {
+                                var p = getContext("2d")
+                                p.beginPath()
+                                p.moveTo(0, 0)
+                                p.lineTo(width, 0)
+                                p.lineTo(width, height - 10)
+                                p.lineTo(width / 2 + 10, height - 10)
+                                p.lineTo(width / 2, height)
+                                p.lineTo(width / 2 - 10, height -10)
+                                p.lineTo(0, height - 10)
+                                p.closePath()
+                                p.fillStyle = "blue"
+                                p.fill()
+                                p.endPath()
+                            }
+                        }
+                    }
+                }
             }
             MyToolButton {
                 width: parent.height
