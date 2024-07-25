@@ -10,7 +10,7 @@
             "installDir": "${sourceDir}/out/install/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_TOOLCHAIN_FILE": "/home/liumeng/app/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                "CMAKE_TOOLCHAIN_FILE": "/opt/app/vcpkg/scripts/buildsystems/vcpkg.cmake"
             },
             "condition": {
                 "type": "equals",
