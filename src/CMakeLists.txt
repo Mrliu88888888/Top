@@ -47,4 +47,5 @@ install(DIRECTORY
 	PATTERN "*.ilk" EXCLUDE
 	PATTERN "*.lib" EXCLUDE
 	PATTERN "*.pdb" EXCLUDE
+	PATTERN "*.log" EXCLUDE
 )
