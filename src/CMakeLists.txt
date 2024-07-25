@@ -37,11 +37,39 @@ install(DIRECTORY
 
 	DESTINATION bin
 	FILES_MATCHING
-	PATTERN "*.exe"
-	PATTERN "*.out"
-	PATTERN "*.dll"
-	PATTERN "*.so"
-	PATTERN "*.so.*"
-	PATTERN "*.rcc"
-	PATTERN "*.qm"
+	PATTERN "*"
+	PATTERN "*.exp" EXCLUDE
+	PATTERN "*.ilk" EXCLUDE
+	PATTERN "*.lib" EXCLUDE
+	PATTERN "*.pdb" EXCLUDE
 )
+if(WIN32)
+	install(CODE
+		"
+		execute_process(COMMAND ${WINDEPLOYQT} --qmldir ${QT_BIN_PATH}/../qml qmlchatui.exe
+			WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+			RESULT_VARIABLE RETURN_CODE
+		)
+		if(NOT RETURN_CODE EQUAL 0)
+			message(FATAL_ERROR \"windeployqt.exe Return Code: \${RETURN_CODE}\")
+		endif()
+		"
+	)
+	install(DIRECTORY
+		${QT_BIN_PATH}/../qml/Qt/labs/platform
+
+		DESTINATION ${EXECUTABLE_OUTPUT_PATH}/Qt/labs
+	)
+elseif(UNIX)
+	install(CODE
+		"
+		execute_process(COMMAND ${LINUXDEPLOY} qmlchatui .
+			WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+			RESULT_VARIABLE RETURN_CODE
+		)
+		if(NOT RETURN_CODE EQUAL 0)
+			message(FATAL_ERROR \"LinuxDeploy.sh Return Code: \${RETURN_CODE}\")
+		endif()
+		"
+	)
+endif()
