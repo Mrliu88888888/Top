@@ -142,12 +142,51 @@ Window {
                     padding: 0
                     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
-                    Rectangle {
-                        anchors.fill: parent
+                    Column {
                         width: parent.width
-                        height: 60
-                        color: "#2A2A2A"
-                        border.width: 0
+
+                        MyToolButton {
+                            width: parent.width
+                            height: 60
+                            enteredColor: "#2F2F33"
+                            exitedColor: "#2A2A2A"
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 5
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "迁移与备份"
+                                color: "#8C8C8C"
+                                font.pointSize: 10
+                            }
+                        }
+                        MyToolButton {
+                            width: parent.width
+                            height: 60
+                            enteredColor: "#2F2F33"
+                            exitedColor: "#2A2A2A"
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 5
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "意见反馈"
+                                color: "#8C8C8C"
+                                font.pointSize: 10
+                            }
+                        }
+                        MyToolButton {
+                            width: parent.width
+                            height: 60
+                            enteredColor: "#2F2F33"
+                            exitedColor: "#2A2A2A"
+                            Text {
+                                anchors.left: parent.left
+                                anchors.leftMargin: 5
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: "设置"
+                                color: "#8C8C8C"
+                                font.pointSize: 10
+                            }
+                        }
                     }
                 }
             }
