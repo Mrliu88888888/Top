@@ -534,6 +534,7 @@ Window {
                         }
                         lvChatRecord.add(userInput.text)
                         userInput.text = ""
+                        lvChatRecord.positionViewAtEnd()
                     }
                 }
             }
