@@ -398,6 +398,62 @@ Window {
         anchors.right: parent.right
         anchors.bottom: chatInput.top
         color: "#F5F5F5"
+
+        ListView {
+            id: lvChatRecord
+            anchors.fill: parent
+            width: parent.width
+            clip: true
+
+            delegate: Rectangle {
+                width: parent.width
+                height: 50
+                Image {
+                    id: avatar
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: 5
+                    width: 45
+                    height: 45
+                    source: model.avatar
+                }
+                Canvas {
+                    anchors.right: avatar.left
+                    anchors.verticalCenter: avatar.verticalCenter
+                    width: msg.width + 20
+                    height: parent.height - 6
+                    onPaint: {
+                        var p = getContext("2d")
+                        p.beginPath()
+                        p.moveTo(0, 0)
+                        p.lineTo(width - 10, 0)
+                        p.lineTo(width - 10, height / 2 - 5)
+                        p.lineTo(width, height / 2)
+                        p.lineTo(width - 10, height / 2 + 5)
+                        p.lineTo(width - 10, height)
+                        p.lineTo(0, height)
+                        p.closePath()
+                        p.fillStyle = "#9EEA6A"
+                        p.fill()
+                    }
+
+                    Text {
+                        id: msg
+                        anchors.centerIn: parent
+                        rightPadding: 10
+                        text: model.msg
+                    }
+                }
+
+            }
+
+            model: ListModel {
+                ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "20220709" }
+                ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello world"; time: "20220709" }
+                ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "你好啊 小孟"; time: "20220709" }
+                ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "居居 居居 居居！！！"; time: "20220709" }
+            }
+        }
     }
 
     Rectangle {
