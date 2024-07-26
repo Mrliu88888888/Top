@@ -483,7 +483,6 @@ Window {
                                 p.closePath()
                                 p.fillStyle = "blue"
                                 p.fill()
-                                p.endPath()
                             }
                         }
                     }

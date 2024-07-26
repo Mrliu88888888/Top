@@ -9,6 +9,10 @@ int main(int argc, char* argv[])
 
     QGuiApplication app(argc, argv);
 
+    app.setOrganizationName("TopStudio");
+    app.setOrganizationDomain("TopStudio");
+    app.setApplicationName("Top");
+
     QQmlApplicationEngine engine("qrc:/qml/WeChat.qml");
     if (engine.rootObjects().isEmpty()) {
         return -1;
