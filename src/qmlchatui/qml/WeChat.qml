@@ -407,7 +407,7 @@ Window {
 
             delegate: Rectangle {
                 width: parent.width
-                height: 50
+                height: (msg.height < 50) ? 50 : msg.height + 20
                 Image {
                     id: avatar
                     anchors.right: parent.right
@@ -421,7 +421,7 @@ Window {
                     anchors.right: avatar.left
                     anchors.verticalCenter: avatar.verticalCenter
                     width: msg.width + 20
-                    height: parent.height - 6
+                    height: parent.height - 5
                     onPaint: {
                         var p = getContext("2d")
                         p.beginPath()
@@ -444,14 +444,19 @@ Window {
                         text: model.msg
                     }
                 }
-
             }
 
             model: ListModel {
+                id: chatRecordModel
                 ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "20220709" }
                 ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello world"; time: "20220709" }
                 ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "你好啊 小孟"; time: "20220709" }
                 ListElement { avatar: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "居居 居居 居居！！！"; time: "20220709" }
+            }
+
+            function add(msg) {
+                chatRecordModel.append(
+                    { avatar: "qrc:/chat/res/chat/sd.png", name: "jane", msg: msg, time: "20220709" })
             }
         }
     }
@@ -480,16 +485,62 @@ Window {
                 anchors.fill: parent
                 color: "#F5F5F5"
 
+                Popup {
+                    id: emptyMsgTips
+                    x: -width / 2 + parent.width / 2
+                    y: -height
+                    width: 150
+                    height: 45
+                    padding: 0
+                    bottomInset: 10
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                    Canvas {
+                        anchors.fill: parent
+                        onPaint: {
+                            var p = getContext("2d")
+                            p.beginPath()
+                            p.moveTo(0, 0)
+                            p.lineTo(width, 0)
+                            p.lineTo(width, height - 10)
+                            p.lineTo(width / 2 + 5, height - 10)
+                            p.lineTo(width / 2, height)
+                            p.lineTo(width / 2 - 5, height - 10)
+                            p.lineTo(0, height - 10)
+                            p.closePath()
+                            p.fillStyle = "#F5F5F5"
+                            p.fill()
+                        }
+
+                        Text {
+                            anchors.top: parent.top
+                            anchors.topMargin: 10
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: "不能发送空白消息"
+                            font.pointSize: 10
+                        }
+                    }
+                }
+
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
                     onEntered: parent.color = "#129611"
                     onExited: parent.color = "#F5F5F5"
+                    onClicked: {
+                        if ("" === userInput.text) {
+                            emptyMsgTips.open()
+                            return
+                        }
+                        lvChatRecord.add(userInput.text)
+                        userInput.text = ""
+                    }
                 }
             }
         }
 
         TextArea {
+            id: userInput
             anchors.top: inputBar.bottom
             anchors.bottom: send.top
             anchors.left: inputBar.left
