@@ -3,6 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import Qt.labs.platform 1.1
 import QtQuick.Dialogs 1.3
+import QtQuick.Controls 1.4 as QCtl1
+import QtQuick.Controls.Styles 1.4 as QCtlStyle1
 
 Window {
     id: root
@@ -470,7 +472,6 @@ Window {
 
                         Canvas {
                             anchors.fill: parent
-
                             onPaint: {
                                 var p = getContext("2d")
                                 p.beginPath()
@@ -484,6 +485,38 @@ Window {
                                 p.closePath()
                                 p.fillStyle = "#FFFFFF"
                                 p.fill()
+                            }
+
+                            QCtl1.TabView {
+                                anchors.fill: parent
+                                anchors.bottomMargin: 10
+                                tabPosition: Qt.BottomEdge
+                                style: QCtlStyle1.TabViewStyle {
+                                    tab: Rectangle {
+                                        implicitWidth: 75
+                                        implicitHeight: 50
+                                        color: styleData.selected ? "#FFFFFF" : "#F5F5F5"
+                                        Image {
+                                            anchors.centerIn: parent
+                                            width: 35
+                                            height: 35
+                                            source: styleData.title
+                                        }
+                                    }
+                                }
+
+                                QCtl1.Tab {
+                                    title: "qrc:/chat/res/chat/emj1.png"
+                                    Rectangle { color: "#FFFFFF" }
+                                }
+                                QCtl1.Tab {
+                                    title: "qrc:/chat/res/chat/emj2.png"
+                                    Rectangle { color: "#FFFFFF" }
+                                }
+                                QCtl1.Tab {
+                                    title: "qrc:/chat/res/chat/emj3.png"
+                                    Rectangle { color: "#FFFFFF" }
+                                }
                             }
                         }
                     }

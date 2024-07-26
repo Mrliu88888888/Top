@@ -26,5 +26,8 @@
         <file>res/chat/wfile.png</file>
         <file>res/chat/max2.png</file>
         <file>res/chat/man.png</file>
+        <file>res/chat/emj1.png</file>
+        <file>res/chat/emj2.png</file>
+        <file>res/chat/emj3.png</file>
     </qresource>
 </RCC>
