@@ -387,7 +387,7 @@ Window {
             anchors.right: parent.right
             iconImage: "qrc:/chat/res/chat/close.png"
             enteredColor: "#FA5151"
-            onMyClicked: Qt.quit()
+            onMyClicked: root.hide()
         }
     }
 
@@ -710,14 +710,19 @@ Window {
         visible: true
         iconSource: "qrc:/chat/res/chat/chat.png"
         tooltip: "WeChat"
+
         menu: Menu {
+            MenuItem {
+                text: "重启"
+                onTriggered: Qt.exit(100)
+            }
             MenuItem {
                 text: "退出"
                 onTriggered: Qt.quit()
             }
         }
         onActivated: (reason)=> {
-            if(reason === SystemTrayIcon.Trigger){
+            if (reason === SystemTrayIcon.Trigger) {
                 root.show()
                 root.raise()
                 root.requestActivate()
