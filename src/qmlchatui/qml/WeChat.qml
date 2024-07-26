@@ -483,7 +483,7 @@ Window {
                                 p.lineTo(width / 2 - 10, height -10)
                                 p.lineTo(0, height - 10)
                                 p.closePath()
-                                p.fillStyle = "#FFFFFF"
+                                p.fillStyle = "#E8E8E8"
                                 p.fill()
                             }
 
@@ -507,10 +507,36 @@ Window {
 
                                 QCtl1.Tab {
                                     title: "qrc:/chat/res/chat/emj1.png"
-                                    Rectangle { color: "#FFFFFF" }
+                                    Rectangle {
+                                        color: "#FFFFFF"
+                                        Flow {
+                                            anchors.fill: parent
+                                            anchors.margins: 10
+                                            spacing: 1
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                            Image { width: 40; height: 40; source: "qrc:/chat/res/chat/emj1.png" }
+                                        }
+                                    }
                                 }
                                 QCtl1.Tab {
                                     title: "qrc:/chat/res/chat/emj2.png"
+                                    Rectangle { color: "#FFFFFF" }
+                                }
+                                QCtl1.Tab {
+                                    title: "qrc:/chat/res/chat/emj3.png"
                                     Rectangle { color: "#FFFFFF" }
                                 }
                                 QCtl1.Tab {
