@@ -6,6 +6,8 @@ import QtQuick.Dialogs 1.3
 import QtQuick.Controls 1.4 as QCtl1
 import QtQuick.Controls.Styles 1.4 as QCtlStyle1
 
+import Top 1.0
+
 Window {
     id: root
     width: 1250
@@ -720,6 +722,17 @@ Window {
                 root.raise()
                 root.requestActivate()
             }
+        }
+    }
+
+    Text {
+        anchors.left: parent.left
+        anchors.top: parent.top
+        text: "fps:%1".arg(fps_item.fps)
+        color: "white"
+
+        FpsItem {
+            id: fps_item
         }
     }
 }

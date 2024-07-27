@@ -5,6 +5,7 @@
 #include <qtimer.h>
 #include <qdebug.h>
 #include "ChatListModel/ChatListModel.h"
+#include "FpsItem/FpsItem.h"
 
 int main(int argc, char* argv[])
 {
@@ -21,6 +22,8 @@ int main(int argc, char* argv[])
     for (int i = 0; i < 100; ++i) {
         chatListModel.addChat("小孟同学", "居居 居居");
     }
+
+    qmlRegisterType<FpsItem>("Top", 1, 0, "FpsItem");
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("chatListModel", &chatListModel);
