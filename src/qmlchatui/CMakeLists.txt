@@ -5,6 +5,6 @@ if(MSVC AND NOT TOP_DEBUG)
 endif()
 add_executable(${PROJECT_NAME} ${QT_WIN32} "main.cpp"
 	"res.qrc" "qml.qrc"
-	"ChatListModel.cpp"
+	"ChatListModel/ChatListModel.cpp"
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE ${QT}::Quick)

@@ -4,7 +4,7 @@
 #include <qprocess.h>
 #include <qtimer.h>
 #include <qdebug.h>
-#include "ChatListModel.h"
+#include "ChatListModel/ChatListModel.h"
 
 int main(int argc, char* argv[])
 {
