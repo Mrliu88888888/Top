@@ -18,7 +18,9 @@ int main(int argc, char* argv[])
     app.setApplicationName("Top");
 
     ChatListModel chatListModel;
-    chatListModel.addChat("小孟同学", "居居 居居");
+    for (int i = 0; i < 100; ++i) {
+        chatListModel.addChat("小孟同学", "居居 居居");
+    }
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("chatListModel", &chatListModel);
