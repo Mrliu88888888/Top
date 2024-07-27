@@ -223,11 +223,24 @@ Window {
                     source: "qrc:/chat/res/chat/search.png"
                 }
             }
-            Image {
+            MyToolButton {
                 width: 30
                 height: 30
-                source: "qrc:/chat/res/chat/add.png"
+                iconImage: "qrc:/chat/res/chat/add.png"
+
+                onMyClicked: {
+                    chatListModel.addChat("qml", "hello")
+                }
             }
+            // MyToolButton {
+            //     width: 30
+            //     height: 30
+            //     iconImage: "qrc:/chat/res/chat/min.png"
+            //
+            //     onMyClicked: {
+            //         chatListModel.removeChat(listView.currentIndex)
+            //     }
+            // }
         }
     }
 
@@ -257,7 +270,7 @@ Window {
                 height: 50
                 x: 15
                 y: 15
-                source: model.img
+                source: model.avatar
             }
             Text {
                 anchors.top: img.top
@@ -286,28 +299,7 @@ Window {
                 onClicked: listView.currentIndex = index
             }
         }
-
-        model: ListModel {
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-            ListElement { img: "qrc:/chat/res/chat/sd.png"; name: "jane"; msg: "hello"; time: "now" }
-        }
+        model: chatListModel
     }
 
     Rectangle {
