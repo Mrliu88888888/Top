@@ -17,13 +17,13 @@
 
 namespace lm {
 namespace app {
-TOP_API int SingleApp()
+ int SingleApp()
 {
     auto hMutex = ::CreateMutex(NULL, FALSE, _T(TOP_NAME));
     return hMutex ? ((ERROR_ALREADY_EXISTS == ::GetLastError()) ? 1 : 0) : -100;
 }
 
-TOP_API bool ChangeWorkPath()
+ bool ChangeWorkPath()
 {
     TCHAR path[MAX_PATH] = { 0 };
     GetModuleFileName(NULL, path, MAX_PATH);
@@ -35,7 +35,7 @@ TOP_API bool ChangeWorkPath()
     return SetCurrentDirectory(path) == TRUE;
 }
 
-TOP_API void SetConsoleCharsetUTF8()
+ void SetConsoleCharsetUTF8()
 {
     // 在win server 2012 r2操作系统测试崩溃
     // std::locale::global(std::locale(".UTF-8"));
@@ -121,7 +121,7 @@ LONG WINAPI ExceptionFilter(LPEXCEPTION_POINTERS lpExceptionInfo)
     return GenerateMiniDump(lpExceptionInfo);
 }
 #pragma endregion
-TOP_API void AutoDump()
+ void AutoDump()
 {
     SetUnhandledExceptionFilter(ExceptionFilter);
 }
