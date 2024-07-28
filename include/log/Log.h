@@ -20,7 +20,6 @@ constexpr int LOG_LEVEL_CRITICAL = 5;
 ///                                   1024 * 1024 = 1MB
 ///                                   1024 * 1024 * 1024 = 1GB
 /// @param maxfiles 最大日志文件数
-/// @return 空
 TOP_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
                   const uint32_t& maxfiles);
 
@@ -30,7 +29,6 @@ TOP_API void Init(const std::string& logname, const int& level, const uint32_t& 
 /// @param filename 源码文件名
 /// @param linenum 源码行号
 /// @param funcname 函数名
-/// @return 空
 TOP_API void Log(const int& level, const std::string& msg, const char* filename, const int& linenum,
                  const char* funcname);
 }   // namespace log
