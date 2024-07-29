@@ -5,6 +5,7 @@ import Qt.labs.platform 1.1
 import QtQuick.Dialogs 1.3
 import QtQuick.Controls 1.4 as QCtl1
 import QtQuick.Controls.Styles 1.4 as QCtlStyle1
+import QtQml 2.12
 
 import Top 1.0
 
@@ -557,7 +558,44 @@ Window {
                 base: 0.9
                 enteredColor: "#00000000"
                 iconImage: "qrc:/chat/res/chat/emj.png"
-                onMyClicked: popupEmj.opened ? popupEmj.close() : popupEmj.open()
+                onMyClicked: {
+                    if (popupEmj.opened) {
+                        popupEmj.close()
+                    } else {
+                        loadEmj.visible = true
+                        tmr.start()
+                    }
+                }
+
+                Timer {
+                    id: tmr
+                    interval: 3000
+                    onTriggered: {
+                        loadEmj.visible = false
+                        popupEmj.open()
+                    }
+                }
+
+                Image {
+                    id: loadEmj
+                    visible: false
+                    anchors.centerIn: parent
+                    source: "qrc:/chat/res/chat/emj.png"
+
+                    RotationAnimation {
+                        running: loadEmj.visible
+                        target: loadEmj
+                        from: 0
+                        to: 360
+                        loops: Animation.Infinite
+                        duration: 1000
+                    }
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: "加载中..."
+                    }
+                }
 
                 Popup {
                     id: popupEmj
