@@ -588,7 +588,7 @@ Window {
                         from: 0
                         to: 360
                         loops: Animation.Infinite
-                        duration: 1000
+                        duration: tmr.interval
                     }
 
                     Text {
