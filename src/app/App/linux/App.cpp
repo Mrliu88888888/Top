@@ -8,7 +8,6 @@
 #include <unistd.h>
 
 #include "top/config/config.h"
-#include "top/config/version.h"
 
 namespace lm {
 namespace app {

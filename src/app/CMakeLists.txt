@@ -1,7 +1,8 @@
 project(App)
 
 add_library(${PROJECT_NAME}
-	platform/${TOP_PLATFORM}/App.cpp
+	"App/${TOP_PLATFORM}/App.cpp"
+	"Utils/Utils.cpp"
 )
 if(BUILD_SHARED_LIBS)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_EXPORTS)
