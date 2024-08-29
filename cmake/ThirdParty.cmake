@@ -32,7 +32,3 @@ endif()
 if(USING_MIMALLOC)
 	find_package(mimalloc CONFIG REQUIRED)
 endif()
-add_subdirectory(${TOP_THIRDPARTY}/lib60870) # export
-													 # THIRDPARTY_LIB60870_INCLUDE_DIRS
-													 # THIRDPARTY_LIB60870_LIB_DIRS
-													 # THIRDPARTY_LIB60870_LIBS
