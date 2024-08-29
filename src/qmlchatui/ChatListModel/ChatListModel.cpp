@@ -41,7 +41,7 @@ void ChatListModel::addChat(const QString& name, const QString& msg)
 {
     beginInsertRows(QModelIndex(), d_ptr->data.size(), d_ptr->data.size());
     d_ptr->data.append(ChatListModelPrivate::ChatInfo{
-        "qrc:/chat/res/chat/sd.png",
+        QUrl("qrc:/chat/res/chat/sd.png"),
         name,
         msg,
         QTime::currentTime().toString(),
