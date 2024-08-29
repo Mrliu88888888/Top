@@ -1,2 +1,0 @@
-# VideoCamera
-相机

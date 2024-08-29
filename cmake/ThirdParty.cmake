@@ -32,13 +32,6 @@ endif()
 if(USING_MIMALLOC)
 	find_package(mimalloc CONFIG REQUIRED)
 endif()
-if(BUILD_PROJ_SQLITERPC)
-	find_package(gRPC CONFIG REQUIRED)
-	find_package(protobuf CONFIG REQUIRED)
-endif()
-if(BUILD_PROJ_VIDEOCAMERA)
-	find_package(OpenCV REQUIRED)
-endif()
 add_subdirectory(${TOP_THIRDPARTY}/lib60870) # export
 													 # THIRDPARTY_LIB60870_INCLUDE_DIRS
 													 # THIRDPARTY_LIB60870_LIB_DIRS

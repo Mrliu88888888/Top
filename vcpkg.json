@@ -11,21 +11,9 @@
             "description": "build tests",
             "dependencies": [ "gtest" ]
         },
-        "sqliterpc": {
-            "description": "build SQLiteRPC",
-            "dependencies": [ "protobuf", "grpc" ]
-        },
-        "videocamera": {
-            "description": "build VideoCamera",
-            "dependencies": [ "opencv4" ]
-        },
         "mimalloc": {
             "description": "using mimalloc",
             "dependencies": [ "mimalloc" ]
-        },
-        "unused": {
-            "description": "unused",
-            "dependencies": [ "nlohmann-json" ]
         }
     }
 }

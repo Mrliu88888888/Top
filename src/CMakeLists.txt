@@ -7,12 +7,6 @@ add_subdirectory(app)
 add_subdirectory(conv)
 add_subdirectory(log)
 add_subdirectory(connectionpool)
-if(BUILD_PROJ_SQLITERPC)
-	add_subdirectory(SQLiteRPC)
-endif()
-if(BUILD_PROJ_VIDEOCAMERA)
-	add_subdirectory(VideoCamera)
-endif()
 
 install(TARGETS
 	App
