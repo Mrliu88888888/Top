@@ -46,9 +46,11 @@ Top
 * [vcpkg](https://github.com/microsoft/vcpkg)
 ## Linux代理
 ```bash
-export proxy="http://192.168.80.1:7890"
+export proxy="http://192.168.80.1:7897"
 export http_proxy=$proxy
 export https_proxy=$proxy
+export HTTP_PROXY=$proxy
+export HTTPS_PROXY=$proxy
 ```
 ## Ubuntu
 ```bash
