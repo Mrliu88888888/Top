@@ -1,5 +1,6 @@
 set(TOP_THIRDPARTY "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
-set(TOP_CONFIG_INCLUDE "${CMAKE_BINARY_DIR}/include")
+set(TOP_BINARY_INCLUDE "${CMAKE_BINARY_DIR}/include")
+set(TOP_THIRDPARTY_OUT_DIRS "${CMAKE_BINARY_DIR}/3rd")
 if(CMAKE_CL_64)
 	set(TOP_ARCH "x64")
 else()
@@ -20,20 +21,8 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 if(WIN32)
 	set(TOP_PLATFORM "windows")
-	set(TOP_SHARED_LIB_PREFIX "")
-	set(TOP_SHARED_LIB_SUFFIX ".dll")
-	set(TOP_LINK_STATIC_LIB_PREFIX "")
-	set(TOP_LINK_STATIC_LIB_SUFFIX ".lib")
-	set(TOP_LINK_SHARED_LIB_PREFIX "")
-	set(TOP_LINK_SHARED_LIB_SUFFIX ".lib")
 elseif(UNIX)
 	set(TOP_PLATFORM "linux")
-	set(TOP_SHARED_LIB_PREFIX "lib")
-	set(TOP_SHARED_LIB_SUFFIX ".so")
-	set(TOP_LINK_STATIC_LIB_PREFIX "lib")
-	set(TOP_LINK_STATIC_LIB_SUFFIX ".a")
-	set(TOP_LINK_SHARED_LIB_PREFIX "lib")
-	set(TOP_LINK_SHARED_LIB_SUFFIX ".so")
 endif()
 
 set(CMAKE_C_STANDARD 11)
@@ -51,16 +40,20 @@ elseif(MSVC)
 endif()
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set(ARCHIVE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
-	"${TOP_CONFIG_INCLUDE}/top/config/version.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/config/version.h.in"
+	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/config/version.h"
 )
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
-	"${TOP_CONFIG_INCLUDE}/top/config/config.h"
-)
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/config/config.h.in"
+	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/config/config.h"
+) 
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
-	"${TOP_CONFIG_INCLUDE}/top/global.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/global.h"
+	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/global.h"
 )

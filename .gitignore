@@ -3,5 +3,3 @@
 /out/
 /build/
 /vcpkg_installed/
-
-/CMakePresets.json
