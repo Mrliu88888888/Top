@@ -6,4 +6,11 @@ Window {
     visible: true
     width: 1400
     height: 800 
+
+    Text {
+        anchors.centerIn: parent
+        text: "Hello World"
+        font.pointSize: 20
+        color: "lightgreen"
+    }
 }
