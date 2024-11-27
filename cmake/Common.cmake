@@ -46,14 +46,14 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/config/version.h.in"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/version.h.in"
 	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/config/version.h"
 )
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/config/config.h.in"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/config/config.h.in"
 	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/config/config.h"
-) 
+)
 configure_file(
-	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/${PROJECT_NAME}/global.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/include/top/global.h"
 	"${TOP_BINARY_INCLUDE}/${PROJECT_NAME}/global.h"
 )
