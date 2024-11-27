@@ -9,15 +9,15 @@ set(CPACK_DEBIAN_PACKAGE_MAINTAINER ${CPACK_PACKAGE_CONTACT})
 set(CPACK_NSIS_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
 set(CPACK_NSIS_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION})
 set(CPACK_NSIS_DISPLAY_NAME ${CPACK_PACKAGE_NAME})
-set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/src/Top/res/Top.ico")
-set(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\Top.exe")
-set(CPACK_NSIS_MENU_LINKS
-	"${_install_path}\\\\bin\\\\Top.exe" "Top" 
-	"${_install_path}\\\\CHANGELOG.md" "CHANGELOG"
-)
-set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$DESKTOP\\\\Top.lnk' '$INSTDIR\\\\${_install_path}\\\\bin\\\\Top.exe'")
+set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/src/Night/res/logo.ico")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
 set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+set(CPACK_NSIS_INSTALLED_ICON_NAME "bin/Top.exe")
+set(CPACK_NSIS_MENU_LINKS
+	"bin/Top.exe" "Top"
+	"CHANGELOG.md" "CHANGELOG"
+)
+set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$DESKTOP\\\\Top.lnk' '$INSTDIR\\\\bin\\\\Top.exe'")
 
 if(WIN32)
 	set(CPACK_GENERATOR "ZIP;NSIS64")
@@ -28,4 +28,4 @@ endif()
 include(CPack)
 
 set(CMAKE_INSTALL_UCRT_LIBRARIES TRUE)
-include(InstallRequiredSystemLibraries) 
+include(InstallRequiredSystemLibraries)
