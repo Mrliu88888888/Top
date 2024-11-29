@@ -19,12 +19,6 @@ include(cmake/Pack.cmake)
 include(cmake/ThirdParty.cmake)
 include(cmake/Utils.cmake)
 
-add_subdirectory(src)
-if(BUILD_TESTING)
-	enable_testing()
-	add_subdirectory(test)
-endif()
-
 install(FILES "CHANGELOG.md" DESTINATION .)
 install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
 	DESTINATION bin
@@ -38,3 +32,9 @@ install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
 
 	PATTERN "vc_redist.x64.exe" EXCLUDE
 )
+
+add_subdirectory(src)
+if(BUILD_TESTING)
+	enable_testing()
+	add_subdirectory(test)
+endif()
