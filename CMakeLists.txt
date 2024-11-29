@@ -20,12 +20,21 @@ include(cmake/ThirdParty.cmake)
 include(cmake/Utils.cmake)
 
 add_subdirectory(src)
-
-install(FILES "CHANGELOG.md"
-	DESTINATION .
-)
-
 if(BUILD_TESTING)
 	enable_testing()
 	add_subdirectory(test)
 endif()
+
+install(FILES "CHANGELOG.md" DESTINATION .)
+install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
+	DESTINATION bin
+	FILES_MATCHING
+	PATTERN "*"
+	PATTERN "*.exp" EXCLUDE
+	PATTERN "*.ilk" EXCLUDE
+	PATTERN "*.lib" EXCLUDE
+	PATTERN "*.pdb" EXCLUDE
+	PATTERN "*.a" EXCLUDE
+
+	PATTERN "vc_redist.x64.exe" EXCLUDE
+)

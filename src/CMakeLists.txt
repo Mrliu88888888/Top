@@ -3,30 +3,8 @@ project(src)
 add_subdirectory(Log)
 if(USE_QT_GUI)
 	add_subdirectory(Top)
-	DEPLOYQT(Top) 
+	DEPLOYQT(Top)
 endif()
- 
-install(DIRECTORY
-	${EXECUTABLE_OUTPUT_PATH}/
-
-	DESTINATION bin
-	FILES_MATCHING
-	PATTERN "*"
-	PATTERN "*.exp" EXCLUDE
-	PATTERN "*.ilk" EXCLUDE
-	PATTERN "*.lib" EXCLUDE
-	PATTERN "*.pdb" EXCLUDE
-	PATTERN "*.a" EXCLUDE
-	PATTERN "test_*" EXCLUDE
-	PATTERN "gtest*" EXCLUDE
-
-	PATTERN "*.log" EXCLUDE
-	PATTERN "*.autosave" EXCLUDE
-	PATTERN "*.cache" EXCLUDE
-	PATTERN "*.pid" EXCLUDE
-	PATTERN "*.lock" EXCLUDE
-	PATTERN "vc_redist.x64.exe" EXCLUDE
-)
 
 if(UNIX)
 	find_library(LIBSTDCXX libstdc++.so HINTS ${CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES})
@@ -43,12 +21,12 @@ if(UNIX)
 				)
 			endif()
 		else()
-			message(FATAL_ERROR "libstdc++ realpath not found!")
+			message(FATAL_ERROR "libstdc++ real path not found!")
 		endif()
 	else()
 		message(FATAL_ERROR "libstdc++ not found!")
 	endif()
-	 
+
 	if(USE_QT_GUI)
 		install(TARGETS Top)
 	endif()
