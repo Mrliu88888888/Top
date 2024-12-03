@@ -74,8 +74,10 @@ int main(int argc, char* argv[])
         return -1;
     }
     const auto code = app.exec();
-    qDebug() << "detach shared memory:" << sharedMemory.detach();
 
+    if (!sharedMemory.detach()) {
+        qDebug() << "detach shared memory";
+    }
     switch (code) {
     case 10: QProcess::startDetached(app.applicationFilePath(), app.arguments()); break;
     }
