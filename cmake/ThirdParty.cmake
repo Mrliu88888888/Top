@@ -1,7 +1,3 @@
-if(BUILD_TESTING)
-	find_package(GTest CONFIG REQUIRED)
-endif()
-
 if(USE_QT_GUI)
 	execute_process(COMMAND qmake
 		-query QT_VERSION
@@ -20,6 +16,3 @@ if(USE_QT_GUI)
 		find_package(${QT} COMPONENTS Quick REQUIRED)
 	endif()
 endif()
-
-add_subdirectory(${TOP_THIRDPARTY}/ThreadPool) # export
-												# THIRDPARTY_THREADPOOL_INCLUDE_DIRS

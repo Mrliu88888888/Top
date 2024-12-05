@@ -31,5 +31,6 @@ install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
 
 add_subdirectory(src)
 if(BUILD_TESTING)
+	enable_testing()
 	add_subdirectory(test)
 endif()

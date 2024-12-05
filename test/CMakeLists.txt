@@ -1,5 +1,6 @@
 project(test)
 
-enable_testing()
-
 set(TEST_NAME ${PROJECT_NAME})
+find_package(GTest CONFIG REQUIRED)
+
+# add_subdirectory(xx)
