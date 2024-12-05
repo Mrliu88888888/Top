@@ -10,8 +10,8 @@
 #include <signal.h>
 #include <DbgHelp.h>
 
-#include "top/config/config.h"
-#include "top/config/version.h"
+#include "Top/config/config.h"
+#include "Top/config/version.h"
 
 #pragma comment(lib, "ShLwApi.Lib")
 

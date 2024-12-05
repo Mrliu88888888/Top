@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "top/global.h"
+#include "Top/global.h"
 
 namespace lm {
 namespace coding {

@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <unistd.h>
 
-#include "top/config/config.h"
+#include "Top/config/config.h"
 
 namespace lm {
 namespace app {
