@@ -21,18 +21,8 @@ message(STATUS "${PROJECT_NAME} using mimalloc: ${USING_MIMALLOC}")
 
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
+include(cmake/PackUtils.cmake)
 include(cmake/ThirdParty.cmake)
-include(cmake/Utils.cmake)
-
-add_subdirectory(src)
-
-if(BUILD_TESTING)
-	enable_testing()
-	add_subdirectory(test)
-endif()
-if(BUILD_EXAMPLES)
-	add_subdirectory(example)
-endif()
 
 install(DIRECTORY
 	doc
@@ -43,6 +33,7 @@ install(DIRECTORY
 install(FILES
 	README.md
 	LICENSE
+	CHANGELOG.md
 
 	DESTINATION .
 )
@@ -59,3 +50,12 @@ install(DIRECTORY
 	PATTERN "*.a" EXCLUDE
 	PATTERN "*.log" EXCLUDE
 )
+
+add_subdirectory(src)
+if(BUILD_TESTING)
+	enable_testing()
+	add_subdirectory(test)
+endif()
+if(BUILD_EXAMPLES)
+	add_subdirectory(example)
+endif()

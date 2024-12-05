@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BUILD_TYPE=linux-debug
+BUILD_TYPE=linux-relwithdebinfo
 
 cmake --preset $BUILD_TYPE ..
 cd ../out/build/$BUILD_TYPE
 cmake --build .
-ctest
-cpack
+cpack -G "TGZ"
+cd -

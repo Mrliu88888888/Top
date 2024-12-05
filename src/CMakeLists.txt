@@ -23,7 +23,7 @@ install(EXPORT TopConfig
 	NAMESPACE Top::
 	DESTINATION share/Top
 )
-DEPLOYQT(qmlchatui)
+DEPLOYQT(qmlchatui bin)
 if(WIN32)
 	install(DIRECTORY
 		${QT_BIN_PATH}/../qml/Qt/labs/platform  # qmlchatui/qml/WeChat.qml using import Qt.labs.platform 1.1

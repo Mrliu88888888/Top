@@ -1,0 +1,127 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "linux-debug",
+            "displayName": "Linux Debug",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "/opt/app/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "vendor": { "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": { "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}" } },
+            "environment": {
+                "PATH": "/opt/Qt5.12.5/5.12.5/gcc_64/bin:$penv{PATH}"
+            }
+        },
+        {
+            "name": "linux-release",
+            "displayName": "Linux Release",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "inherits": "linux-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+        },
+        {
+            "name": "linux-relwithdebinfo",
+            "displayName": "Linux RelWithDebInfo",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "inherits": "linux-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "RelWithDebInfo" }
+        },
+
+        {
+            "name": "aarch64-debug",
+            "displayName": "AArch64 Debug",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_COMPILER": "aarch64-linux-gnu-gcc",
+                "CMAKE_CXX_COMPILER": "aarch64-linux-gnu-g++",
+                "VCPKG_TARGET_TRIPLET": "arm64-linux",
+                "CMAKE_TOOLCHAIN_FILE": "/opt/app/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "USE_QT_GUI": false
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "vendor": { "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": { "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}" } },
+            "environment": {
+                "PATH": "/opt/toolchain/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$penv{PATH}"
+            }
+        },
+        {
+            "name": "aarch64-release",
+            "displayName": "AArch64 Release",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "inherits": "aarch64-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+        },
+        {
+            "name": "aarch64-relwithdebinfo",
+            "displayName": "AArch64 RelWithDebInfo",
+            "description": "面向适用于 Linux 的 Windows 子系统(WSL)或远程 Linux 系统。",
+            "inherits": "aarch64-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "RelWithDebInfo" }
+        },
+
+        {
+            "name": "windows-base",
+            "description": "面向具有 Visual Studio 开发环境的 Windows。",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_TOOLCHAIN_FILE": "D:/App/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "environment": {
+                "PATH": "C:/Qt/Qt5.12.5/5.12.5/msvc2017_64/bin;$penv{PATH}"
+            }
+        },
+        {
+            "name": "x64-debug",
+            "displayName": "x64 Debug",
+            "description": "使用 Visual Studio 开发环境定向到 Windows (64 位)。(Debug)",
+            "inherits": "windows-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+        },
+        {
+            "name": "x64-release",
+            "displayName": "x64 Release",
+            "description": "使用 Visual Studio 开发环境定向到 Windows (64 位)。(Release)",
+            "inherits": "x64-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+        },
+        {
+            "name": "x64-relwithdebinfo",
+            "displayName": "x64 RelWithDebInfo",
+            "description": "使用 Visual Studio 开发环境定向到 Windows (64 位)。(RelWithDebInfo)",
+            "inherits": "x64-debug",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "RelWithDebInfo" }
+        }
+    ]
+}
