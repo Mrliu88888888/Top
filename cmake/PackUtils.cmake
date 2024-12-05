@@ -41,7 +41,6 @@ elseif(UNIX)
 		install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/ DESTINATION ${INSTALL_DIR})
 	endfunction()
 
-	set(CMAKE_SKIP_RPATH TRUE)
 	find_program(LINUXDEPLOYQT linuxdeployqt)
 	find_path(QT_BIN_PATH qmake)
 	function(DEPLOYQT TARGET_NAME INSTALL_DIR)
