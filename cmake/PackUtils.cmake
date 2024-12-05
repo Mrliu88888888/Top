@@ -4,6 +4,7 @@ if(WIN32)
 	function(DEPLOYQT TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
+			message(\"[DEPLOYQT] BEGIN ${TARGET_NAME}\")
 			execute_process(COMMAND ${WINDEPLOYQT}
 				--qmldir ${QT_BIN_PATH}/../qml
 				--dir ../deploy/${TARGET_NAME}
@@ -13,6 +14,7 @@ if(WIN32)
 				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
+			message(\"[DEPLOYQT] END ${TARGET_NAME}\")
 			if(NOT RETURN_CODE EQUAL 0)
 				message(FATAL_ERROR \"windeployqt.exe Return Code: \${RETURN_CODE}\")
 			endif()
@@ -30,6 +32,7 @@ elseif(UNIX)
 	function(DEPLOYLINUX TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
+			message(\"[DEPLOYLINUX] BEGIN ${TARGET_NAME}\")
 			execute_process(COMMAND ${LINUXDEPLOY}
 				${TARGET_NAME} ../deploy/${TARGET_NAME}
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
@@ -37,6 +40,7 @@ elseif(UNIX)
 				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
+			message(\"[DEPLOYLINUX] END ${TARGET_NAME}\")
 			if(NOT RETURN_CODE EQUAL 0)
 				message(FATAL_ERROR \"LinuxDeploy.sh Return Code: \${RETURN_CODE}\")
 			endif()
@@ -51,6 +55,7 @@ elseif(UNIX)
 		install(CODE
 			"
 			file(COPY ${EXECUTABLE_OUTPUT_PATH}/${TARGET_NAME} DESTINATION ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME})
+			message(\"[DEPLOYQT] BEGIN ${TARGET_NAME}\")
 			execute_process(COMMAND ${LINUXDEPLOYQT}
 				${TARGET_NAME}
 				-qmake=${QT_BIN_PATH}/qmake
@@ -60,6 +65,7 @@ elseif(UNIX)
 				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
+			message(\"[DEPLOYQT] END ${TARGET_NAME}\")
 			file(REMOVE ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/${TARGET_NAME})
 			if(NOT RETURN_CODE EQUAL 0)
 				message(FATAL_ERROR \"linuxdeployqt Return Code: \${RETURN_CODE}\")
