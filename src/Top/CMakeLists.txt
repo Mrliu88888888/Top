@@ -20,16 +20,10 @@ if(WIN32)
 endif()
 if(WIN32 AND NOT TOP_DEBUG)
 	set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
+	# set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\"")
 endif()
-target_include_directories(${PROJECT_NAME} PRIVATE
-	${FAST_CPP_CSV_PARSER_INCLUDE_DIRS}
-	${SIMPLEINI_INCLUDE_DIRS}
-	${TOP_BINARY_INCLUDE}
-)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-	Threads::Threads
-	${QT}::Quick
-)
+target_include_directories(${PROJECT_NAME} PRIVATE ${TOP_BINARY_INCLUDE})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${QT}::Quick)
 add_dependencies(${PROJECT_NAME} QML_RCC)
 
 DEPLOYQT(${PROJECT_NAME} bin)

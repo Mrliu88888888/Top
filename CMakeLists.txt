@@ -18,11 +18,20 @@ include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
 include(cmake/PackUtils.cmake)
 include(cmake/ThirdParty.cmake)
-include(cmake/Utils.cmake)
+
+install(FILES "CHANGELOG.md" DESTINATION .)
+install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
+	DESTINATION bin
+	FILES_MATCHING
+	PATTERN "*"
+	PATTERN "*.exp" EXCLUDE
+	PATTERN "*.ilk" EXCLUDE
+	PATTERN "*.lib" EXCLUDE
+	PATTERN "*.pdb" EXCLUDE
+	PATTERN "*.a" EXCLUDE
+)
 
 add_subdirectory(src)
 if(BUILD_TESTING)
 	add_subdirectory(test)
 endif()
-
-install(FILES "CHANGELOG.md" DESTINATION .)
