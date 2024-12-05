@@ -1,5 +1,6 @@
 project(src)
 
+add_subdirectory(Top)
 add_subdirectory(main)
 add_subdirectory(qmain)
 add_subdirectory(qmlchatui)
