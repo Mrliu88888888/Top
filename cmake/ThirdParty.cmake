@@ -1,5 +1,3 @@
-find_package(fmt CONFIG REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
 if(BUILD_TESTING)
 	find_package(GTest CONFIG REQUIRED)
 endif()
@@ -24,4 +22,4 @@ if(USE_QT_GUI)
 endif()
 
 add_subdirectory(${TOP_THIRDPARTY}/ThreadPool) # export
-													   # THIRDPARTY_THREADPOOL_INCLUDE_DIRS
+												# THIRDPARTY_THREADPOOL_INCLUDE_DIRS

@@ -1,7 +1,5 @@
 {
-    "dependencies": [
-        "spdlog"
-    ],
+    "dependencies": [],
     "features": {
         "test": {
             "description": "build tests",

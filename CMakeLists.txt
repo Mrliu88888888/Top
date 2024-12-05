@@ -16,6 +16,7 @@ message(STATUS "${PROJECT_NAME} enable Qt GUI support: ${USE_QT_GUI}")
 
 include(cmake/Common.cmake)
 include(cmake/Pack.cmake)
+include(cmake/PackUtils.cmake)
 include(cmake/ThirdParty.cmake)
 include(cmake/Utils.cmake)
 
