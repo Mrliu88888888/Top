@@ -28,6 +28,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	Threads::Threads
-	${QT}::Quick 
+	${QT}::Quick
 )
 add_dependencies(${PROJECT_NAME} QML_RCC)
+
+DEPLOYQT(${PROJECT_NAME} bin)
+install(FILES ${QML_RCC_FILE} DESTINATION bin/rcc)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)

@@ -1,11 +1,13 @@
 if(WIN32)
 	find_program(WINDEPLOYQT windeployqt.exe)
 	find_path(QT_BIN_PATH qmake.exe)
-	function(DEPLOYQT TARGET_NAME)
+	function(DEPLOYQT TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
 			execute_process(COMMAND ${WINDEPLOYQT}
-				--qmldir ${QT_BIN_PATH}/../qml ${TARGET_NAME}.exe
+				--qmldir ${QT_BIN_PATH}/../qml
+				--dir ../deploy/${TARGET_NAME}
+				${TARGET_NAME}.exe
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 				RESULT_VARIABLE RETURN_CODE
 			)
@@ -14,14 +16,20 @@ if(WIN32)
 			endif()
 			"
 		)
+		install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/
+			DESTINATION ${INSTALL_DIR}
+			FILES_MATCHING
+			PATTERN "*"
+			PATTERN "vc_redist.*.exe" EXCLUDE
+		)
 	endfunction()
 elseif(UNIX)
 	find_program(LINUXDEPLOY LinuxDeploy.sh HINTS "${CMAKE_SOURCE_DIR}/script/linux")
-	function(DEPLOYLINUX TARGET_NAME)
+	function(DEPLOYLINUX TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
 			execute_process(COMMAND ${LINUXDEPLOY}
-				${TARGET_NAME} .
+				${TARGET_NAME} ../deploy/${TARGET_NAME}
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 				RESULT_VARIABLE RETURN_CODE
 			)
@@ -30,16 +38,20 @@ elseif(UNIX)
 			endif()
 			"
 		)
+		install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/ DESTINATION ${INSTALL_DIR})
 	endfunction()
 
 	set(CMAKE_SKIP_RPATH TRUE)
 	find_program(LINUXDEPLOYQT linuxdeployqt)
 	find_path(QT_BIN_PATH qmake)
-	function(DEPLOYQT TARGET_NAME)
+	function(DEPLOYQT TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
 			execute_process(COMMAND ${LINUXDEPLOYQT}
-				${TARGET_NAME} -qmake=${QT_BIN_PATH}/qmake -qmldir=${QT_BIN_PATH}/../qml
+				-qmake=${QT_BIN_PATH}/qmake
+				-qmldir=${QT_BIN_PATH}/../qml
+				--dir ../deploy/${TARGET_NAME}
+				${TARGET_NAME}
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 				RESULT_VARIABLE RETURN_CODE
 			)
@@ -48,6 +60,7 @@ elseif(UNIX)
 			endif()
 			"
 		)
+		install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/ DESTINATION ${INSTALL_DIR})
 	endfunction()
 
 	function(LINK_FILE FILE_NAME LINK_FILE_NAME)

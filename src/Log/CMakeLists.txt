@@ -9,3 +9,5 @@ if(BUILD_SHARED_LIBS)
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC ${TOP_BINARY_INCLUDE} .)
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)

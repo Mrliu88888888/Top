@@ -3,21 +3,7 @@ project(src)
 add_subdirectory(Log)
 if(USE_QT_GUI)
 	add_subdirectory(Top)
-	DEPLOYQT(Top)
 endif()
-
-install(DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/
-	DESTINATION bin
-	FILES_MATCHING
-	PATTERN "*"
-	PATTERN "*.exp" EXCLUDE
-	PATTERN "*.ilk" EXCLUDE
-	PATTERN "*.lib" EXCLUDE
-	PATTERN "*.pdb" EXCLUDE
-	PATTERN "*.a" EXCLUDE
-
-	PATTERN "vc_redist.x64.exe" EXCLUDE
-)
 
 if(UNIX)
 	find_library(LIBSTDCXX libstdc++.so HINTS ${CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES})
