@@ -24,6 +24,7 @@ install(EXPORT TopConfig
 	NAMESPACE Top::
 	DESTINATION share/Top
 )
+DEPLOYQT(qmain bin)
 DEPLOYQT(qmlchatui bin)
 if(WIN32)
 	install(DIRECTORY

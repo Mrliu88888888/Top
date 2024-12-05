@@ -9,8 +9,9 @@
 
 int main(int argc, char* argv[])
 {
+    qputenv("QT_OPENGL", "angle");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QCoreApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
 
     QGuiApplication app(argc, argv);
 
