@@ -9,6 +9,8 @@ if(WIN32)
 				--dir ../deploy/${TARGET_NAME}
 				${TARGET_NAME}.exe
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+				OUTPUT_FILE ../deploy/${TARGET_NAME}.out.log
+				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
 			if(NOT RETURN_CODE EQUAL 0)
@@ -31,6 +33,8 @@ elseif(UNIX)
 			execute_process(COMMAND ${LINUXDEPLOY}
 				${TARGET_NAME} ../deploy/${TARGET_NAME}
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+				OUTPUT_FILE ../deploy/${TARGET_NAME}.out.log
+				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
 			if(NOT RETURN_CODE EQUAL 0)
@@ -52,6 +56,8 @@ elseif(UNIX)
 				-qmake=${QT_BIN_PATH}/qmake
 				-qmldir=${QT_BIN_PATH}/../qml
 				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}
+				OUTPUT_FILE ../deploy/${TARGET_NAME}.out.log
+				ERROR_FILE ../deploy/${TARGET_NAME}.err.log
 				RESULT_VARIABLE RETURN_CODE
 			)
 			file(REMOVE ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/${TARGET_NAME})
