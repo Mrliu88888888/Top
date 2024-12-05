@@ -47,14 +47,15 @@ elseif(UNIX)
 	function(DEPLOYQT TARGET_NAME INSTALL_DIR)
 		install(CODE
 			"
+			file(COPY ${EXECUTABLE_OUTPUT_PATH}/${TARGET_NAME} DESTINATION ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME})
 			execute_process(COMMAND ${LINUXDEPLOYQT}
+				${TARGET_NAME}
 				-qmake=${QT_BIN_PATH}/qmake
 				-qmldir=${QT_BIN_PATH}/../qml
-				--dir ../deploy/${TARGET_NAME}
-				${TARGET_NAME}
-				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+				WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}
 				RESULT_VARIABLE RETURN_CODE
 			)
+			file(REMOVE ${EXECUTABLE_OUTPUT_PATH}/../deploy/${TARGET_NAME}/${TARGET_NAME})
 			if(NOT RETURN_CODE EQUAL 0)
 				message(FATAL_ERROR \"linuxdeployqt Return Code: \${RETURN_CODE}\")
 			endif()
