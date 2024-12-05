@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-TEST(demo, func)
+TEST(Suite, Case)
 {
     ASSERT_TRUE(true);
 }
