@@ -19,3 +19,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	${QT}::Core ${QT}::Gui ${QT}::Widgets
 	App
 )
+
+DEPLOYQT(qmain bin)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
