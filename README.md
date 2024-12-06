@@ -46,7 +46,7 @@ Top
 * [vcpkg](https://github.com/microsoft/vcpkg)
 ## Linux代理
 ```bash
-export proxy="http://192.168.80.1:7890"
+export proxy="http://192.168.80.1:7897"
 export http_proxy=$proxy
 export https_proxy=$proxy
 ```
@@ -103,4 +103,9 @@ Linux编译脚本: [build.sh](script/build.sh)
 * [grpc](https://github.com/grpc/grpc)
 * [protobuf](https://github.com/protocolbuffers/protobuf)
 * [nlohmann_json](https://github.com/nlohmann/json)
-* [opencv](https://github.com/opencv/opencv)
+* [boost](https://github.com/boostorg/boost)
+* [fast-cpp-csv-parser](https://github.com/ben-strasser/fast-cpp-csv-parser)
+* [cppkafka](https://github.com/mfontanini/cppkafka)
+* [redis-plus-plus](https://github.com/sewenew/redis-plus-plus)
+* [hwinfo](https://github.com/lfreist/hwinfo)
+* [lib60870](https://github.com/mz-automation/lib60870)
