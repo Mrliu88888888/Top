@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.30)
 
 option(BUILD_TESTING "build tests" OFF)
 option(USE_QT_GUI "enable building with Qt GUI support" ON)
