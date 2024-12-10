@@ -47,9 +47,9 @@ int main(int argc, char* argv[])
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     app.setOrganizationName("白日做Meng技术无限公司");
-    app.setApplicationName(TOP_NAME "UI");
+    app.setApplicationName(TOP_NAME);
     app.setApplicationVersion(TOP_VERSION);
-    app.setWindowIcon(QIcon(":/res/TopUI.png"));
+    app.setWindowIcon(QIcon(":/res/Top.png"));
 
     QSharedMemory sharedMemory(app.applicationName() + app.applicationVersion());
     if (!sharedMemory.create(1, QSharedMemory::ReadWrite)) {
