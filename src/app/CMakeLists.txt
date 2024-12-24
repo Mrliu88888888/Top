@@ -1,7 +1,7 @@
 project(App)
 
 add_library(${PROJECT_NAME}
-	"App/${TOP_PLATFORM}/App.cpp"
+	"App/${TOP_OS_PLATFORM}/App.cpp"
 	"Utils/Utils.cpp"
 )
 if(BUILD_SHARED_LIBS)
