@@ -31,12 +31,6 @@ Top
 主线分支
 ## simple
 轻量简单的，可以此作为CMake项目开发模板
-## simple-core
-轻量简单的，可以此作为CMake项目开发模板，它与simple区别是没有导出include和lib，仅仅作为app而不是第三方库
-## base
-不包括代码，仅CMake模板，更加简洁，只需搜索替换关键字'TOP_' 'Top'即可
-## base-core
-不包括代码，仅CMake模板，更加简洁，只需搜索替换关键字'TOP_' 'Top'即可，无导出include和lib
 
 # 开发环境
 * [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) -> [参考设置](https://github.com/Mrliu88888888/TopThirdParty/blob/master/Visual%20Studio%202022/README.md)
@@ -49,10 +43,21 @@ Top
 export proxy="http://192.168.80.1:7897"
 export http_proxy=$proxy
 export https_proxy=$proxy
+export HTTP_PROXY=$proxy
+export HTTPS_PROXY=$proxy
 ```
 ## Ubuntu
 ```bash
 sudo apt install build-essential cmake ninja-build pkg-config
+```
+## Qt
+```bash
+# 为无图形界面的 Debian 系统安装 Qt 所需的依赖库
+sudo apt install -y \
+libfontconfig1 fontconfig libfontconfig1-dev \
+libx11-xcb1 libasound2 x11-apps libice6 libsm6 libxaw7 libxft2 libxmu6 libxpm4 libxt6 x11-apps xbitmaps \
+mesa-common-dev libglu1-mesa-dev libgl-dev \
+libpulse-dev libxkbcommon-x11-0 libegl1 libgstreamer-plugins-base1.0-0
 ```
 
 # 使用
