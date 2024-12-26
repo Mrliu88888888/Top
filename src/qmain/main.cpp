@@ -12,8 +12,6 @@
 #include "Top/config/config.h"
 #include "Top/config/version.h"
 
-#include "App.h"
-
 struct Config
 {
     explicit Config()
@@ -28,23 +26,39 @@ struct Config
     static Config Parse();
 };
 
+/*
+ *                        _oo0oo_
+ *                       o8888888o
+ *                       88" . "88
+ *                       (| -_- |)
+ *                       0\  =  /0
+ *                     ___/`---'\___
+ *                   .' \\|     |// '.
+ *                  / \\|||  :  |||// \
+ *                 / _||||| -:- |||||- \
+ *                |   | \\\  - /// |   |
+ *                | \_|  ''\---/''  |_/ |
+ *                \  .-\__  '-'  ___/-. /
+ *              ___'. .'  /--.--\  `. .'___
+ *           ."" '<  `.___\_<|>_/___.' >' "".
+ *          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ *          \  \ `_.   \_ __\ /__ _/   .-` /  /
+ *      =====`-.____`.___ \_____/___.-`___.-'=====
+ *                        `=---='
+ *
+ *
+ *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ *            佛祖保佑       永不宕机     永无BUG
+ */
 int main(int argc, char* argv[])
 {
-#ifdef _WIN32
-    lm::app::AutoDump();
-#endif   // _WIN32
-
     QApplication app(argc, argv);
 
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     app.setApplicationName(TOP_NAME);
     app.setApplicationVersion(TOP_VERSION);
-
-    if (lm::app::SingleApp() != 0) {
-        QMessageBox::information(nullptr, "", "SingleApp");
-        return 1;
-    }
 
     // 切换工作目录
     if (!QDir::setCurrent(app.applicationDirPath())) {

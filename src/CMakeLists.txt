@@ -3,15 +3,12 @@ project(src)
 add_subdirectory(Top)
 add_subdirectory(main)
 add_subdirectory(qmain)
-add_subdirectory(qmlchatui)
-add_subdirectory(app)
-add_subdirectory(conv)
+add_subdirectory(qmlmain)
 add_subdirectory(log)
 add_subdirectory(connectionpool)
+add_subdirectory(qmlchatui)
 
 install(TARGETS
-	App
-	Conv
 	Log
 
 	EXPORT TopConfig

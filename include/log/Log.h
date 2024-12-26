@@ -12,7 +12,18 @@ constexpr int LOG_LEVEL_WARN     = 3;
 constexpr int LOG_LEVEL_ERROR    = 4;
 constexpr int LOG_LEVEL_CRITICAL = 5;
 
-/// @brief 初始化日志
+struct Info
+{
+    explicit Info();
+
+    int      level;
+    uint32_t maxfilesize;
+    uint32_t maxfiles;
+};
+
+TOP_API Info Parse(const std::string_view& filename);
+
+/// @brief 初始化日志 按文件大小
 /// @param logname 日志文件名
 /// @param level 日志等级
 /// @param maxfilesize 0: 输出到控制台
@@ -20,8 +31,15 @@ constexpr int LOG_LEVEL_CRITICAL = 5;
 ///                                   1024 * 1024 = 1MB
 ///                                   1024 * 1024 * 1024 = 1GB
 /// @param maxfiles 最大日志文件数
-TOP_API void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
-                  const uint32_t& maxfiles);
+TOP_API void InitForSize(const std::string& logname, const int level, const uint32_t maxfilesize,
+                         const uint32_t maxfiles);
+
+/// @brief 初始化日志 按天数
+/// @param logname 日志文件名
+/// @param level 日志等级
+/// @param maxfiles 最大日志文件数 0: 输出到控制台
+///                               >0: 保存maxfiles天文件
+TOP_API void InitForDaily(const std::string& logname, const int level, const uint32_t maxfiles);
 
 /// @brief 输出日志
 /// @param level 日志等级
@@ -29,8 +47,8 @@ TOP_API void Init(const std::string& logname, const int& level, const uint32_t& 
 /// @param filename 源码文件名
 /// @param linenum 源码行号
 /// @param funcname 函数名
-TOP_API void Log(const int& level, const std::string& msg, const char* filename, const int& linenum,
-                 const char* funcname);
+TOP_API void Log(const int level, const std::string_view& msg, const char* filename,
+                 const int linenum, const char* funcname);
 }   // namespace log
 }   // namespace lm
 

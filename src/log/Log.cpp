@@ -2,12 +2,14 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/daily_file_sink.h>
+#include <SimpleIni.h>
 
 namespace lm {
 namespace log {
 static std::shared_ptr<spdlog::logger> logger;
 
-inline auto LogLevel(const int& level)
+static auto LogLevel(const int level)
 {
     switch (level) {
     case LOG_LEVEL_TRACE: return spdlog::level::trace;
@@ -20,14 +22,8 @@ inline auto LogLevel(const int& level)
     }
 }
 
- void Init(const std::string& logname, const int& level, const uint32_t& maxfilesize,
-                  const uint32_t& maxfiles)
+static void SetLogLevel(const int level)
 {
-    logger = (0 == maxfilesize)
-                 ? spdlog::stdout_color_mt(logname)
-                 : spdlog::rotating_logger_mt(
-                       logname, logname, maxfilesize, ((maxfiles <= 0) ? 1 : maxfiles));
-
     const auto logLevel = LogLevel(level);
     logger->set_level(logLevel);
     switch (logLevel) {
@@ -40,8 +36,42 @@ inline auto LogLevel(const int& level)
     }
 }
 
- void Log(const int& level, const std::string& msg, const char* filename, const int& linenum,
-                 const char* funcname)
+Info::Info()
+    : level(LOG_LEVEL_INFO)
+    , maxfilesize(1024 * 1024 * 10)
+    , maxfiles(180)
+{}
+
+Info Parse(const std::string_view& filename)
+{
+    Info info;
+    if (CSimpleIniA ini; ini.LoadFile(filename.data()) == SI_OK) {
+        info.level       = ini.GetLongValue("log", "level", info.level);
+        info.maxfilesize = ini.GetLongValue("log", "maxfilesize", info.maxfilesize);
+        info.maxfiles    = ini.GetLongValue("log", "maxfiles", info.maxfiles);
+    }
+    return info;
+}
+
+void InitForSize(const std::string& logname, const int level, const uint32_t maxfilesize,
+                 const uint32_t maxfiles)
+{
+    logger = (0 == maxfilesize)
+                 ? spdlog::stdout_color_mt(logname)
+                 : spdlog::rotating_logger_mt(
+                       logname, logname, maxfilesize, ((maxfiles <= 0) ? 1 : maxfiles));
+    SetLogLevel(level);
+}
+
+void InitForDaily(const std::string& logname, const int level, const uint32_t maxfiles)
+{
+    logger = (0 == maxfiles) ? spdlog::stdout_color_mt(logname)
+                             : spdlog::daily_logger_mt(logname, logname, 0, 0, false, maxfiles);
+    SetLogLevel(level);
+}
+
+void Log(const int level, const std::string_view& msg, const char* filename, const int linenum,
+         const char* funcname)
 {
     logger->log(spdlog::source_loc{filename, linenum, funcname}, LogLevel(level), msg);
     logger->flush();

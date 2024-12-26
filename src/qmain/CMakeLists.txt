@@ -16,8 +16,7 @@ add_custom_target(APP_RCC ALL DEPENDS ${APP_RCC_FILE})
 add_executable(${PROJECT_NAME} "main.cpp")
 add_dependencies(${PROJECT_NAME} APP_RCC)
 target_link_libraries(${PROJECT_NAME} PRIVATE
-	${QT}::Core ${QT}::Gui ${QT}::Widgets
-	App
+	${QT}::Core ${QT}::Gui ${QT}::Widgets Log
 )
 
 DEPLOYQT(qmain bin)
