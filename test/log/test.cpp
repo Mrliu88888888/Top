@@ -3,7 +3,7 @@
 
 TEST(demo, log_count)
 {
-    lm::log::Init("log/test.log", lm::log::LOG_LEVEL_TRACE, 1024 * 1024, 5);
+    lm::log::InitForSize("log/test.log", lm::log::LOG_LEVEL_TRACE, 1024 * 1024, 5);
 
     LOG_TRACE("hello world {} {}", 1, "123");
     LOG_DEBUG("hello world");
