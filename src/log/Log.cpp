@@ -3,7 +3,6 @@
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/daily_file_sink.h>
-#include <SimpleIni.h>
 
 namespace lm {
 namespace log {
@@ -41,17 +40,6 @@ Info::Info()
     , maxfilesize(1024 * 1024 * 10)
     , maxfiles(180)
 {}
-
-Info Parse(const std::string_view& filename)
-{
-    Info info;
-    if (CSimpleIniA ini; ini.LoadFile(filename.data()) == SI_OK) {
-        info.level       = ini.GetLongValue("log", "level", info.level);
-        info.maxfilesize = ini.GetLongValue("log", "maxfilesize", info.maxfilesize);
-        info.maxfiles    = ini.GetLongValue("log", "maxfiles", info.maxfiles);
-    }
-    return info;
-}
 
 void InitForSize(const std::string& logname, const int level, const uint32_t maxfilesize,
                  const uint32_t maxfiles)

@@ -2,8 +2,6 @@
     "dependencies": [
         "concurrentqueue",
         "fmt",
-        "libiconv",
-        "simpleini",
         "spdlog"
     ],
     "features": {

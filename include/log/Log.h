@@ -21,8 +21,6 @@ struct Info
     uint32_t maxfiles;
 };
 
-TOP_API Info Parse(const std::string_view& filename);
-
 /// @brief 初始化日志 按文件大小
 /// @param logname 日志文件名
 /// @param level 日志等级
