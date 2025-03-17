@@ -8,7 +8,7 @@ using std::endl;
 
 int main()
 {
-    lm::log::InitForSize("log/app.log", lm::log::LOG_LEVEL_DEBUG, 1024 * 1024 * 10, 3);
+    lm::log::Init("log/app.log", spdlog::level::level_enum::info, 1);
 
     cout << "top app version: " << TOP_VERSION << endl;
     LOG_INFO("top app version: {}, {}-{}-{}",

@@ -1,7 +1,6 @@
 project(Log)
 
 add_library(${PROJECT_NAME} "Log.cpp")
-target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 if(BUILD_SHARED_LIBS)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE TOP_EXPORTS)
 	target_compile_definitions(${PROJECT_NAME} PUBLIC TOP_SHARED)
@@ -13,4 +12,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	$<BUILD_INTERFACE:${TOP_BINARY_INCLUDE}>
 	$<INSTALL_INTERFACE:include>
 )
-target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+target_link_libraries(${PROJECT_NAME} PUBLIC spdlog::spdlog)
