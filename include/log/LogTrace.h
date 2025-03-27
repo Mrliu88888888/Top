@@ -3,38 +3,34 @@
 #include "Log.h"
 
 namespace _log {
-class LogTraceScoped final
+class LogScoped final
 {
 public:
-    explicit LogTraceScoped(const char* filename, const int32_t linenum, const char* funcname,
-                            const std::string_view& msg = "")
-        : filename_(filename)
-        , linenum_(linenum)
-        , funcname_(funcname)
+    explicit LogScoped(const char* filename, const int32_t linenum, const char* funcname,
+                       const spdlog::level::level_enum level, const std::string_view& msg)
+        : source_loc_({filename, linenum, funcname})
+        , level_(level)
         , msg_(msg)
     {
-        spdlog::log(spdlog::source_loc{filename_, linenum_, funcname_},
-                    spdlog::level::trace,
-                    msg_.empty() ? "[in]" : "[in] {}",
-                    msg_);
+        spdlog::log(source_loc_, level_, msg_.empty() ? "[in]" : "[in] {}", msg_);
     }
-    ~LogTraceScoped()
-    {
-        spdlog::log(spdlog::source_loc{filename_, linenum_, funcname_},
-                    spdlog::level::trace,
-                    msg_.empty() ? "[out]" : "[out] {}",
-                    msg_);
-    }
+    ~LogScoped() { spdlog::log(source_loc_, level_, msg_.empty() ? "[out]" : "[out] {}", msg_); }
 
 private:
-    const char*       filename_;
-    const int32_t     linenum_;
-    const char*       funcname_;
-    const std::string msg_;
+    const spdlog::source_loc        source_loc_;
+    const spdlog::level::level_enum level_;
+    const std::string               msg_;
 };
 }   // namespace _log
 
-#define LOG_TRACE_EMPTY LOG_TRACE("")
-#define LOG_TRACE_SCOPED _log::LogTraceScoped __LOGTRACESCOPED(__FILE__, __LINE__, SPDLOG_FUNCTION)
-#define LOG_TRACE_SCOPED_MESSAGE(MSG) \
-    _log::LogTraceScoped __LOGTRACESCOPEDMESSAGE(__FILE__, __LINE__, SPDLOG_FUNCTION, MSG)
+#define __CALL_LOGSCOPED(LEVEL, MSG) \
+    _log::LogScoped __LOGSCOPED(__FILE__, __LINE__, SPDLOG_FUNCTION, LEVEL, MSG)
+
+#define LOG_TRACE_SCOPED_MESSAGE(MSG) __CALL_LOGSCOPED(spdlog::level::trace, MSG)
+#define LOG_TRACE_SCOPED LOG_TRACE_SCOPED_MESSAGE("")
+
+#define LOG_DEBUG_SCOPED_MESSAGE(MSG) __CALL_LOGSCOPED(spdlog::level::debug, MSG)
+#define LOG_DEBUG_SCOPED LOG_DEBUG_SCOPED_MESSAGE("")
+
+#define LOG_INFO_SCOPED_MESSAGE(MSG) __CALL_LOGSCOPED(spdlog::level::info, MSG)
+#define LOG_INFO_SCOPED LOG_INFO_SCOPED_MESSAGE("")
