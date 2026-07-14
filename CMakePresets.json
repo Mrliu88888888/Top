@@ -87,7 +87,8 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_TOOLCHAIN_FILE": "D:/App/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                "CMAKE_TOOLCHAIN_FILE": "D:/App/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_CXX_CLANG_TIDY": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/Llvm/x64/bin/clang-tidy.exe"
             },
             "condition": {
                 "type": "equals",
